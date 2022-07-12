@@ -10,7 +10,6 @@ services:
     build:
       context: frontend
       dockerfile: Dockerfile
-      target: run-dev
     volumes:
       - ./frontend:/app
 
