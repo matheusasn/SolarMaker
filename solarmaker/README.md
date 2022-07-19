@@ -25,6 +25,6 @@ Uses gunicorn + nginx.
 ### Comands
 
 1. Create admin user
-
-    docker exec -it <container> python manange.py createsuperuser
+    docker container ls
+    docker exec -it 0e2ddd5aaa2a python manage.py createsuperuser --email admin@admin.com --username admin
  
