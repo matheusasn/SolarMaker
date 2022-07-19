@@ -28,3 +28,14 @@ Uses gunicorn + nginx.
     docker container ls
     docker exec -it 0e2ddd5aaa2a python manage.py createsuperuser --email admin@admin.com --username admin
  
+2. Virtual Env - To run django local
+    sudo apt-get install python-virtualenv
+    cd app
+    virtualenv python venv
+    source './venv/bin/activate'
+    pip install -r requirements.txt
+
+3. Run Django Local
+    cd app
+    source './venv/bin/activate'
+    python manange.py runserver...
