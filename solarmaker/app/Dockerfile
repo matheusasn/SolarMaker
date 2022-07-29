@@ -29,4 +29,4 @@ COPY . .
 # run entrypoint.sh
 ENTRYPOINT ["/usr/src/app/entrypoint.sh"]
 
-RUN python manage.py createsuperuser --email admin@admin.com --username admin --password admin
+#RUN python manage.py createsuperuser --email admin@admin.com --username admin

@@ -25,17 +25,64 @@ Uses gunicorn + nginx.
 ### Comands
 
 1. Create admin user
-    docker container ls
-    docker exec -it 0e2ddd5aaa2a python manage.py createsuperuser --email admin@admin.com --username admin
- 
-2. Virtual Env - To run django local
-    sudo apt-get install python-virtualenv
-    cd app
-    virtualenv python venv
-    source './venv/bin/activate'
-    pip install -r requirements.txt
 
-3. Run Django Local
+    ```sh
+    docker container ls
+
+    docker exec -it 0e2ddd5aaa2a python manage.py createsuperuser --email admin@admin.com --username admin
+    ```
+    
+    1.1. Get the following error?
+
+        "django.db.utils.OperationalError: FATAL: database "hello_django_dev" does not exist"
+
+        Run 
+
+        ```sh
+        $docker-compose down -v   
+        ```
+        to remove the volumes along with the containers. 
+        
+        Then, re-build the images, run the containers, and apply the migrations.
+
+        ```sh
+        $docker-compose exec backend python manage.py migrate --noinput
+        ```
+
+3. Virtual Env - To run django local
+
+    ```sh
+    sudo apt-get install python-virtualenv
+    
     cd app
+
+    virtualenv python venv
+
     source './venv/bin/activate'
-    python manange.py runserver...
+
+    pip install -r requirements.txt
+    ```
+
+4. Run Django Local
+
+    ```sh
+    cd app
+
+    source './venv/bin/activate'
+
+    python manage.py runserver
+
+    or 
+
+    sudo docker-compose exec backend python manage.py runserver
+    ```
+
+5. To make migrations
+
+    ```sh
+    python manage.py makemigrations
+
+    or
+
+    sudo docker-compose exec backend python manage.py makemigrations
+    ``` 
