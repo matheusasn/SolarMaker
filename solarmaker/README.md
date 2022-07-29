@@ -86,3 +86,4 @@ Uses gunicorn + nginx.
 
     sudo docker-compose exec backend python manage.py makemigrations
     ``` 
+
