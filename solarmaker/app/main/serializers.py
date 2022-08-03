@@ -7,14 +7,15 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         fields = ['id', 'username', 'email', 'password']
 
 class ClientSerializer(serializers.HyperlinkedModelSerializer):
+    url = serializers.HyperlinkedIdentityField(view_name="Clients-detail")
     class Meta:
         model = Client
-        fields = ['name', 'email', 'company_name', 'cpf_cnpj']
+        fields = ['url', 'name', 'email', 'company_name', 'cpf_cnpj']
 
-class ProjectSerializer(serializers.HyperlinkedModelSerializer):
+class ProjectSerializer(serializers.ModelSerializer):
     class Meta:
         model = Project
-        fields = ['project_name', 'client_cpf_cnpj', 'description', 
+        fields = ['id', 'project_name', 'client_cpf_cnpj', 'description', 
                   'responsible_person', 'representatives', 'initial_data',
                   'final_data', 'status', 'budget']
 
