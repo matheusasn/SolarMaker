@@ -20,6 +20,7 @@ class Client(models.Model):
         return self.name
 
 class Project(models.Model):
+    id = models.UUIDField(primary_key = True, default = uuid4, editable = False)
     project_name = models.CharField(max_length=255)
     client_cpf_cnpj = models.ForeignKey(Client, on_delete=models.CASCADE)
     description = models.CharField(max_length=255, default="")
