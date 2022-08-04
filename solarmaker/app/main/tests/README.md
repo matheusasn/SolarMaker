@@ -26,6 +26,7 @@
     Cadastramento de usuário
 
 1.1  Cenário: Realizando cadastro com dados válidos
+    
     ```sh 
     Dado usuário na página inicial
     Quando acessa “Cadastrar novo usuário” e informa username, e-mail e senha 
