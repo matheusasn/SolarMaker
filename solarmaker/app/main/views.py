@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import viewsets
+from rest_framework import viewsets, permissions
 from . import models, serializers
 
 class Teste(APIView):
@@ -10,15 +10,13 @@ class Teste(APIView):
             'hello':'word'
         })
 
-class UserViewSet(viewsets.ModelViewSet):
-    serializer_class = serializers.UserSerializer
-    queryset = models.User.objects.all()
-
 class ClientViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.ClientSerializer
     queryset = models.Client.objects.all()
+    permission_classes = [permissions.IsAuthenticated]
 
 class ProjectViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.ProjectSerializer
     queryset = models.Project.objects.all()
+    permission_classes = [permissions.IsAuthenticated]
 
