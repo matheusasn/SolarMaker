@@ -1,10 +1,5 @@
 from rest_framework import serializers
-from .models import Project, User, Client
-
-class UserSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = User
-        fields = ['id', 'username', 'email', 'password']
+from .models import Project, Client
 
 class ClientSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
