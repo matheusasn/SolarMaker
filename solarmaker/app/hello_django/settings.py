@@ -29,6 +29,13 @@ DEBUG = int(os.environ.get("DEBUG", default=0))
 
 ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")
 
+CORS_ORIGIN_ALLOW_ALL = False
+
+CORS_ORIGIN_WHITELIST = (
+
+       'http://localhost:3000',
+
+)
 
 # Application definition
 
@@ -42,6 +49,8 @@ INSTALLED_APPS = [
     'rest_framework',
 
     "main",
+
+    "corsheaders",
 ]
 
 MIDDLEWARE = [
@@ -52,6 +61,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'hello_django.urls'
