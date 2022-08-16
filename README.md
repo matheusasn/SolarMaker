@@ -1,99 +1,128 @@
 ### API documentation
 
-#### GET all users
+#### GET all clients
 
-    http://localhost:8000/users/
-
-    Response:
-
-    [
-        {
-            "id": "6916469c-5fe2-4284-8a6b-db4e0746cdfc",
-            "username": "me",
-            "email": "me@me"
-        },
-        {
-            "id": "752f73f0-80e7-4229-9d85-d4b0fb883df5",
-            "username": "hi",
-            "email": "hi@hi"
-        }
-    ]
-
-#### GET a user
-
-    http://localhost:8000/users/<id>/
-
-    Example: http://localhost:8000/users/6916469c-5fe2-4284-8a6b-db4e0746cdfc/
+    http://localhost:8000/api/v1/clientes/
 
     Response:
 
     {
-        "id": "6916469c-5fe2-4284-8a6b-db4e0746cdfc",
-        "username": "me",
-        "email": "me@me"
+        "detail": "As credenciais de autenticação não foram fornecidas."
+    }   
+
+    or
+    
+    {
+        "count": 1,
+        "next": null,
+        "previous": null,
+        "results": [
+            {
+                "name": "eu",
+                "email": "eu@eu.br",
+                "phone_number": "(11)2222-2222",
+                "adress": "rua tal",
+                "cpf_cnpj": "111.111.111-00"
+            }
+        ]
+    }
+
+#### GET a client
+
+    http://localhost:8000/api/v1/clientes/<id>/
+
+    Example: http://localhost:8000/api/v1/clientes/12345678987/
+
+    Response:
+
+    {
+        "name": "Joao carlos",
+        "email": "joao@joao.br",
+        "phone_number": "(11)92222-2222",
+        "adress": "etc",
+        "cpf_cnpj": "12345678987"
     }
 
 
-### POST a user
+### POST a client
 
-    http://localhost:8000/users/
+    http://localhost:8000/api/v1/clientes/
 
     Request:
 
-    {
-        "username": "me",
-        "email": "me@me",
-        "password": "me"
+   {
+        "name": "Joao carlos",
+        "email": "joao@joao.br",
+        "phone_number": "(11)92222-2222",
+        "adress": "etc",
+        "cpf_cnpj": "12345678987"
     }
+
 
 #### GET all Projects
 
-    http://localhost:8000/projects/
-
-    Response:
-
-    [
-        {
-            "id": "3aa0b3a3-f052-40d2-8d76-05147f990152",
-            "project_name": "Hello",
-            "client_cpf_cnpj": "123456789",
-            "initial_data": "2022-07-29",
-            "final_data": null,
-            "status": "Análise",
-            "budget": 100.0
-        }
-    ]
-
-#### GET a Project
-
-    http://localhost:8000/projects/<id>/
-
-    Example: http://localhost:8000/projects/3aa0b3a3-f052-40d2-8d76-05147f990152/
+    http://localhost:8000/api/v1/projetos/
 
     Response:
 
     {
-        "id": "3aa0b3a3-f052-40d2-8d76-05147f990152",
+        "count": 1,
+        "next": null,
+        "previous": null,
+        "results": [
+            {
+                "id": "7f6f4aed-c4f4-45b6-b08c-63aa0bf673c5",
+                "project_name": "Hello",
+                "client": "111.111.111-00",
+                "description": "etc",
+                "responsible": "fulano",
+                "vendor": "fulano",
+                "potency": 1222.0,
+                "modules": "etc",
+                "inverter": "etc",
+                "status": "Em andamento",
+                "budget": 100.0
+            }
+        ]
+    }
+
+#### GET a Project
+
+    http://localhost:8000/api/v1/projetos/<id>/
+
+    Example: http://localhost:8000/api/v1/projetos/7f6f4aed-c4f4-45b6-b08c-63aa0bf673c5/
+
+    Response:
+
+    {
+        "id": "7f6f4aed-c4f4-45b6-b08c-63aa0bf673c5",
         "project_name": "Hello",
-        "client_cpf_cnpj": "123456789",
-        "initial_data": "2022-07-29",
-        "final_data": null,
-        "status": "Análise",
+        "client": "111.111.111-00",
+        "description": "etc",
+        "responsible": "fulano",
+        "vendor": "fulano",
+        "potency": 1222.0,
+        "modules": "etc",
+        "inverter": "etc",
+        "status": "Em andamento",
         "budget": 100.0
     }
 
 ### POST a Project
 
-    http://localhost:8000/projects/
+    http://localhost:8000/api/v1/projetos/
 
     Request:
 
     {
-        "id": "3aa0b3a3-f052-40d2-8d76-05147f990152",
         "project_name": "Hello",
-        "client_cpf_cnpj": "123456789",
-        "initial_data": "2022-07-29",
-        "final_data": null,
-        "status": "Análise",
-        "budget": 100.0
+        "client": "111.111.111-00",
+        "description": "etc",
+        "responsible": "fulano",
+        "vendor": "fulano",
+        "potency": 1222.0,
+        "modules": "etc",
+        "inverter": "etc",
+        "status": "Em andamento",
+        "budget": 100,0
     }
