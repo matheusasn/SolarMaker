@@ -4,8 +4,12 @@ import Header from "./component/layout/Header";
 import Footer from "./component/layout/Footer";
 import MainPage from "./component/pages/MainPage"
 import Project from "./component/register/Project";
+<<<<<<< Updated upstream
 import Login from "./component/pages/Login";
 import useToken from "./useToken";
+=======
+import User from "./component/register/User";
+>>>>>>> Stashed changes
 import "./App.css"
 
 function App() {
@@ -21,6 +25,7 @@ function App() {
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="/NewProject" element={<Project />} />
+          <Route path="/NewUser" element={<User />} />
         </Routes>
       </Router>
       <Footer></Footer>

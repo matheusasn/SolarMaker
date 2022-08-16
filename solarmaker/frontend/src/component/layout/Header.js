@@ -38,6 +38,11 @@ function ProfileButton() {
             </Link>
         </Col>
         <Col className="col-options m-3 ms-0 mx-4">
+            <Link to="/NewUser" onClick={handleShowPopover} className="text-dark style-options">
+                Cadastrar Usuario
+            </Link>
+        </Col>
+        <Col className="col-options m-3 ms-0 mx-4">
           <Row>
             <Col sm="auto px-0 ps-3">
               <LogoutIcon style={{ color: "#DB1F1F" }} />{" "}
