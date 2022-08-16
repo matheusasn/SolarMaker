@@ -29,7 +29,17 @@ DEBUG = int(os.environ.get("DEBUG", default=0))
 
 ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")
 
-CORS_ORIGIN_ALLOW_ALL = False
+# CORS_ORIGIN_ALLOW_ALL = False
+
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_ORIGINS = [
+     'http://localhost:3000',
+]
+CORS_ALLOW_ORIGIN_REGEXES = [
+     'http://localhost:3000',
+]
+
 
 CORS_ORIGIN_WHITELIST = (
 
@@ -47,7 +57,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     'rest_framework',
-
+    "rest_framework.authtoken",
     "main",
 
     "corsheaders",
@@ -149,7 +159,12 @@ MEDIA_ROOT = BASE_DIR / "mediafiles"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-REST_FRAMEWORK = {
-  'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-  'PAGE_SIZE': 10
-} 
+
+REST_FRAMEWORK = {     
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.pagination.PageNumberPagination',
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',     
+    )
+    
+    } 
