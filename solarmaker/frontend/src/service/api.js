@@ -13,7 +13,7 @@ const sendClients = (json) => {
     })
 }
 
-const sendProject = (json) => {
+const sendProjects = (json) => {
     console.log(json)
     api.post("/projects/", json).
     then(response => {
@@ -23,5 +23,5 @@ const sendProject = (json) => {
 
 export {
     sendClients,
-    sendProject
+    sendProjects
 }

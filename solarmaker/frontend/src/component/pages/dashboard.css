@@ -1,0 +1,9 @@
+.title-style {
+    font-weight: bold;
+    color: white
+}
+
+.card-style {
+    -webkit-box-shadow: 2px 5px 16px 0px #adb5bd, 4px 0px 5px -4px rgba(0,0,0,0); 
+    box-shadow: 2px 5px 16px 0px #adb5bd, 4px 0px 5px -4px rgba(0,0,0,0);
+}

@@ -3,7 +3,7 @@ import {Navbar, Row, Col, Tabs, Tab, Container, Form, Button} from "react-bootst
 import { Link } from "react-router-dom";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import BottomHeader from "../layout/BottomHeader";
-import {sendClients, sendProject} from "../../service/api"
+import {sendClients, sendProjects} from "../../service/api"
 import "./project.css"
 
 function Project(){
@@ -47,10 +47,14 @@ function Project(){
         }))
     }
 
-    const handleSendNewProject = () => {
+    const handleSendNewClients = () => {
         sendClients(clients)
     }
-    // console.log(clients)
+
+    const handleSendNewProject = () => {
+        sendProjects(project)
+    }
+    
     const FormNewProject = () => {
         return (
             <Tabs
@@ -75,19 +79,19 @@ function Project(){
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="cpf_cnpj" required>
                                 <Form.Label className="style-title">CPF/CNPJ</Form.Label>
-                                <Form.Control type="text" placeholder="CPF/CNPJ" />
+                                <Form.Control type="number" placeholder="CPF/CNPJ" />
                             </Form.Group>
                         </Form>
                     </Container>
                     <div className="d-flex justify-content-end">
-                        <Button onClick={handleSendNewProject} className="save-button-form">
+                        <Button onClick={handleSendNewClients} className="save-button-form">
                             Salvar
                         </Button>
                     </div>
                 </Tab>
                 <Tab eventKey="Project" title="Projeto">
                     <Container>
-                        <Form>
+                        <Form onChange={(e) => handleProjects(e)}>
                             <Form.Group className="mb-3" controlId="project_name">
                                 <Form.Label className="style-title">Nome do projeto</Form.Label>
                                 <Form.Control type="text" placeholder="Projeto" />
