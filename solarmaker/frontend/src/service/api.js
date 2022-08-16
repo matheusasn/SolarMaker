@@ -19,13 +19,13 @@ const sendProjects = (json) => {
     })
 }
 
-<<<<<<< Updated upstream
 const auth = async (username, password) => {
+    console.log(username, password)
     let response = await api.post(`/api-token-auth/`, { username, password });
-    console.log(response)
+    
     return response.data;
-  }
-=======
+}
+
 const sendUsers = (json) => {
     console.log(json)
     api.post("/users/", json).
@@ -33,14 +33,10 @@ const sendUsers = (json) => {
         console.log("response: ", response)
     })
 }
->>>>>>> Stashed changes
 
 export {
     sendClients,
     sendProjects,
-<<<<<<< Updated upstream
-    auth
-=======
+    auth,
     sendUsers
->>>>>>> Stashed changes
 }

@@ -6,8 +6,8 @@
   
 .profile-button {
     border-radius: 100px !important;
-    background-color: #e1e8df !important;
-    border-color: #e1e8df !important;
+    background-color: #e8e3df !important;
+    border-color: #e8e3df !important;
 }
   
 .profile-user {
@@ -25,13 +25,13 @@
 }
   
 .profile-button:hover {
-    background-color: #caeec0 !important;
-    border-color: #caeec0 !important;
+    background-color: #eaeaea !important;
+    border-color: #eaeaea !important;
 }
   
 .profile-button:focus {
-    background-color: #e1e8df !important;
-    border-color: #e1e8df !important;
+    background-color: #e8e3df !important;
+    border-color: #e8e3df !important;
     box-shadow: none !important;
 }
   

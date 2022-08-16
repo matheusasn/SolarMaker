@@ -88,9 +88,9 @@ function ProfileButton() {
             </Col>
             <Col sm="auto" className="p-0 pt-1 responsive-desktop-username">
               {show ? (
-                <ExpandLess className="dark" style={{ color: "green" }} />
+                <ExpandLess className="dark" style={{ color: "#000" }} />
               ) : (
-                <ExpandMoreIcon style={{ color: "green" }} />
+                <ExpandMoreIcon style={{ color: "#000" }} />
               )}
             </Col>
           </Row>
@@ -105,7 +105,7 @@ function Header() {
     <Navbar className="header justify-content-between">
       <Container>
         <Navbar.Brand>
-          <span className="color-white">Dashboard</span>
+          <Link to="/"><span className="color-white">Dashboard</span></Link>
         </Navbar.Brand>
         <ProfileButton></ProfileButton>
       </Container>

@@ -85,7 +85,7 @@ function Project(){
                     </Container>
                     <div className="d-flex justify-content-end">
                         <Button onClick={handleSendNewClients} className="save-button-form">
-                            Salvar
+                            Cadastrar
                         </Button>
                     </div>
                 </Tab>
@@ -111,7 +111,7 @@ function Project(){
                         </Form>
                         <div className="d-flex justify-content-end">
                             <Button onClick={handleSendNewProject} className="save-button-form">
-                                Salvar
+                                Cadastrar
                             </Button>
                         </div>
                     </Container>
@@ -129,7 +129,7 @@ function Project(){
                         <Col>
                             <Link className="text-decoration-none" to="/">
                             <ArrowBackIcon className="text-light" />
-                                <span className="ms-2 text-light ">Cadastrar</span>
+                                <span className="text-light">Novo Projeto</span>
                             </Link>
                         </Col>
                     </Row>

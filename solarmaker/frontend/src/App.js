@@ -4,18 +4,15 @@ import Header from "./component/layout/Header";
 import Footer from "./component/layout/Footer";
 import MainPage from "./component/pages/MainPage"
 import Project from "./component/register/Project";
-<<<<<<< Updated upstream
 import Login from "./component/pages/Login";
 import useToken from "./useToken";
-=======
 import User from "./component/register/User";
->>>>>>> Stashed changes
 import "./App.css"
 
 function App() {
   const { token, setToken } = useToken();
 
-  if (!token) {
+  if (false) {
     return <Login setToken={setToken} />;
   }
   return (

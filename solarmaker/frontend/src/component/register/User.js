@@ -27,7 +27,13 @@ function User(){
 
 
     const handleSendNewUsers = () => {
-        sendUsers(users)
+        
+        if(sendUsers(users)){
+            return alert("Usuário criado com sucesso")
+        }else{
+            return alert("Erro ao criar Usuário")
+        }
+
     }
 
 
@@ -56,9 +62,11 @@ function User(){
                         </Form>
                     </Container>
                     <div className="d-flex justify-content-end">
-                        <Button onClick={handleSendNewUsers} className="save-button-form">
-                            Salvar
-                        </Button>
+                        <Link to="/">
+                            <Button onClick={handleSendNewUsers} className="save-button-form">
+                                Cadastrar
+                            </Button>
+                        </Link>
                     </div>
                 </Tab>
             </Tabs>
@@ -74,7 +82,7 @@ function User(){
                         <Col>
                             <Link className="text-decoration-none" to="/">
                             <ArrowBackIcon className="text-light" />
-                                <span className="ms-2 text-light ">Cadastrar</span>
+                                <span className="text-light">Novo Usuário</span>
                             </Link>
                         </Col>
                     </Row>
