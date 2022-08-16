@@ -1,0 +1,103 @@
+.header {
+    background-color: #29304a;
+    min-height: 60px;
+    height: 60px;
+  }
+  
+.profile-button {
+    border-radius: 100px !important;
+    background-color: #e1e8df !important;
+    border-color: #e1e8df !important;
+}
+  
+.profile-user {
+    font: normal normal bold 12px/15px Montserrat !important;
+    letter-spacing: 0 !important;
+    color: #333333 !important;
+    text-align: left !important;
+}
+  
+.profile-role {
+    font: normal normal bold 12px/15px Montserrat !important;
+    letter-spacing: 0 !important;
+    color: #333333 !important;
+    text-align: left !important;
+}
+  
+.profile-button:hover {
+    background-color: #caeec0 !important;
+    border-color: #caeec0 !important;
+}
+  
+.profile-button:focus {
+    background-color: #e1e8df !important;
+    border-color: #e1e8df !important;
+    box-shadow: none !important;
+}
+  
+.container-btn-profile {
+    display: flex;
+    justify-content: center;
+}
+  
+.col-img-profile {
+    padding: 0 4px !important;
+}
+  
+.img-profile {
+    width: 35px !important;
+}
+  
+.col-information-profile {
+    padding: 1rem;
+}
+  
+.popover-arrow {
+    display: none !important;
+}
+  
+.style-options {
+    font: normal normal bold 12px/15px Montserrat !important;
+    letter-spacing: 0 !important;
+    text-decoration: none !important;
+    text-align: left !important;
+}
+  
+.responsive-display-username {
+    display: none;
+}
+  
+.responsive-desktop-username {
+    display: block;
+}
+  
+@media only screen and (max-width: 580px) {
+    .responsive-display-username {
+      display: block;
+    }
+  
+    .responsive-desktop-username {
+      display: none;
+      font-size: 12px;
+    }
+
+    .profile-button {
+        background-color: transparent !important;
+        border-color: transparent !important;
+    }
+
+    .profile-button:hover {
+        background-color: transparent !important;
+        border-color: transparent !important;
+    }
+
+    .profile-button:focus {
+        background-color: transparent !important;
+        border-color: transparent !important;
+    }
+
+    .profile-user{
+        color: white !important;
+    }
+}
+  
