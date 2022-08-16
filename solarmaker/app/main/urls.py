@@ -1,5 +1,6 @@
 from django.urls import include, path
 from rest_framework import routers
+from rest_framework.authtoken.views import obtain_auth_token
 
 from main import views
 
@@ -16,5 +17,8 @@ router.register(r'clientes/documentos', views.ProjectViewSet, basename="Document
 urlpatterns = [
     path('api/v1/', include(router.urls)),
     path('auth/', include('rest_framework.urls')),
-    path('teste/', views.Teste.as_view())
+    path('teste/', views.Teste.as_view()),
+    path(
+        "api/v1/api-token-auth/", obtain_auth_token, name="api_token_auth"
+    ),
 ]

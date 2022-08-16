@@ -4,9 +4,16 @@ import Header from "./component/layout/Header";
 import Footer from "./component/layout/Footer";
 import MainPage from "./component/pages/MainPage"
 import Project from "./component/register/Project";
+import Login from "./component/pages/Login";
+import useToken from "./useToken";
 import "./App.css"
 
 function App() {
+  const { token, setToken } = useToken();
+
+  if (!token) {
+    return <Login setToken={setToken} />;
+  }
   return (
     <div className="App">
       <Router>
