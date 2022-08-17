@@ -12,19 +12,14 @@
 
     or
     
+   
     {
-        "count": 1,
-        "next": null,
-        "previous": null,
-        "results": [
-            {
-                "name": "eu",
-                "email": "eu@eu.br",
-                "phone_number": "(11)2222-2222",
-                "adress": "rua tal",
-                "cpf_cnpj": "111.111.111-00"
-            }
-        ]
+         "name": "eu",
+         "email": "eu@eu.br",
+         "phone_number": "(11)2222-2222",
+         "adress": "rua tal",
+         "cpf_cnpj": "111.111.111-00"          
+       
     }
 
 #### GET a client
@@ -65,26 +60,22 @@
 
     Response:
 
-    {
-        "count": 1,
-        "next": null,
-        "previous": null,
-        "results": [
-            {
-                "id": "7f6f4aed-c4f4-45b6-b08c-63aa0bf673c5",
-                "project_name": "Hello",
-                "client": "111.111.111-00",
-                "description": "etc",
-                "responsible": "fulano",
-                "vendor": "fulano",
-                "potency": 1222.0,
-                "modules": "etc",
-                "inverter": "etc",
-                "status": "Em andamento",
-                "budget": 100.0
-            }
-        ]
-    }
+    
+   {
+         "id": "7f6f4aed-c4f4-45b6-b08c-63aa0bf673c5",
+         "project_name": "Hello",
+         "client": "111.111.111-00",
+         "description": "etc",
+         "responsible": "fulano",
+         "vendor": "fulano",
+         "potency": 1222.0,
+         "modules": "etc",
+         "inverter": "etc",
+         "status": "Em andamento",
+         "budget": 100.0
+   }
+        
+    
 
 #### GET a Project
 
