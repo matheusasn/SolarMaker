@@ -84,7 +84,7 @@ function Login({ setToken }) {
     }
   };
 
-  var backgroundStyle = `linear-gradient( rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4) ), url(${process.env.PUBLIC_URL}/background.jpg)`;
+  var backgroundStyle = `url(${process.env.PUBLIC_URL}/background.jpg)`;
 
   return (
     <div id="login_root" style={{ background: backgroundStyle }}>
