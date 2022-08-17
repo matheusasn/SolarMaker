@@ -1,9 +1,22 @@
 import Axios from "axios"
 
-const api = Axios.create({
-    baseURL: "http://localhost:8000/api/v1/"
+const isToken = JSON.parse(localStorage.getItem("token"))
 
+const loginAuth = () => (
+    console.log(isToken?.token),
+    {
+    
+    "Authorization": `Token ${localStorage.getItem(isToken?.token)}`,
+    "Content-Type": "application/json",
+  });
+
+
+
+const api = Axios.create({
+    baseURL: "http://localhost:8000/api/v1/",
+    headers: loginAuth()
 })
+
 
 const sendClients = (json) => {
     api.post("/clientes/", json).
