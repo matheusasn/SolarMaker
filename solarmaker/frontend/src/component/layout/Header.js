@@ -14,6 +14,7 @@ import { Link } from "react-router-dom";
 import { ExpandLess } from "@mui/icons-material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import LogoutIcon from "@mui/icons-material/Logout";
+import { refreshToken } from "../../service/api"
 import "./header.css";
 
 function ProfileButton() {
@@ -27,6 +28,14 @@ function ProfileButton() {
 
   const handleShowPopover = () => {
     setShow(!show);
+  }
+
+  const handleLogout = () => {
+    try {
+      refreshToken();
+    } catch (err) {
+      console.log("Coult not handle logout", err)
+    }
   }
 
   const popoverBody = (
@@ -46,7 +55,7 @@ function ProfileButton() {
           <Row>
             <Col sm="auto px-0 ps-3">
               <LogoutIcon style={{ color: "#DB1F1F" }} />{" "}
-                <a href="" className="text-danger style-options">
+                <a href="" className="text-danger style-options" onClick={handleLogout}>
                     Sair
                 </a>
             </Col>
@@ -105,7 +114,7 @@ function Header() {
     <Navbar className="header justify-content-between">
       <Container>
         <Navbar.Brand>
-          <Link to="/"><span className="color-white">Dashboard</span></Link>
+          <Link to="/" className="style-dashboard"><span className="color-white">Dashboard</span></Link>
         </Navbar.Brand>
         <ProfileButton></ProfileButton>
       </Container>

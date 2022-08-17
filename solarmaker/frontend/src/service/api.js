@@ -20,23 +20,27 @@ const sendProjects = (json) => {
 }
 
 const auth = async (username, password) => {
-    console.log(username, password)
     let response = await api.post(`/api-token-auth/`, { username, password });
     
     return response.data;
 }
 
 const sendUsers = (json) => {
-    console.log(json)
     api.post("/users/", json).
     then(response => {
         console.log("response: ", response)
     })
 }
 
+const refreshToken = () => {
+    localStorage.clear();
+    document.location.reload(true);
+}
+
 export {
     sendClients,
     sendProjects,
     auth,
-    sendUsers
+    sendUsers,
+    refreshToken
 }

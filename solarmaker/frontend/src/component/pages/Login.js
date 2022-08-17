@@ -11,11 +11,11 @@ async function loginUser(username, password) {
 function Footer() {
   return (
     <Row className="footer_login row justify-content-between">
-      <Col className="mb-2"></Col>
-      <Col className="mb-2">
+      <Col></Col>
+      <Col>
         Copyright 2022 © - SolarMaker
       </Col>
-      <Col className="mb-2">
+      <Col>
         Política de Privacidade
       </Col>
     </Row>
