@@ -3,7 +3,7 @@ import {Navbar, Row, Col, Tabs, Tab, Container, Form, Button} from "react-bootst
 import { Link } from "react-router-dom";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import BottomHeader from "../layout/BottomHeader";
-import {sendClients, sendProjects} from "../../service/api"
+import api from "../../service/api"
 import "./project.css"
 
 function Project(){
@@ -48,11 +48,11 @@ function Project(){
     }
 
     const handleSendNewClients = () => {
-        sendClients(clients)
+        api.sendClients(clients)
     }
 
     const handleSendNewProject = () => {
-        sendProjects(project)
+        api.sendProjects(project)
     }
     
     const FormNewProject = () => {

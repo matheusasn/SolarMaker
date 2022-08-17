@@ -3,7 +3,7 @@ import {Navbar, Row, Col, Tabs, Tab, Container, Form, Button} from "react-bootst
 import { Link } from "react-router-dom";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import BottomHeader from "../layout/BottomHeader";
-import {sendUsers} from "../../service/api"
+import api from "../../service/api"
 import "./user.css"
 
 function User(){
@@ -28,7 +28,7 @@ function User(){
 
     const handleSendNewUsers = () => {
         
-        if(sendUsers(users)){
+        if(api.sendUsers(users)){
             return alert("Usuário criado com sucesso")
         }else{
             return alert("Erro ao criar Usuário")

@@ -1,59 +1,65 @@
-import Axios from "axios"
+import axios from "axios"
 
-const isToken = JSON.parse(localStorage.getItem("token"))
+const token = JSON.parse(localStorage.getItem("token"))
 
-const loginAuth = () => (
-    console.log(isToken?.token),
-    {
+class Api {
+    constructor() {
+        console.log(token?.token)
+        this.axios = axios.create({
+            baseURL: "http://localhost:8000/api/v1/",
+            timeout: 30000,
+            headers: {
+                'Authorization': `Token ${token?.token}`
+            },
+            withCredentials: true,
+        })
+        this.axios.interceptors.response.use(
+            (response) => {
+                return response;
+            },
+            async (error) => {
+                const acess_token = localStorage.getItem("token")
+                if (error.response.status === 401 && acess_token) {
+                    // this.refreshToken();
+                    console.log(error.response.status)
+                }
+                return Promise.reject(error);
+            }
+        )
+    }
+
+    async sendClients(json) {
+        let response = await this.axios.post("/clientes/", json);
+        return response.data
+    }
     
-    "Authorization": `Token ${localStorage.getItem(isToken?.token)}`,
-    "Content-Type": "application/json",
-  });
-
-
-
-const api = Axios.create({
-    baseURL: "http://localhost:8000/api/v1/",
-    headers: loginAuth()
-})
-
-
-const sendClients = (json) => {
-    api.post("/clientes/", json).
-    then(response => {
-        console.log("response: ", response)
-    })
-}
-
-const sendProjects = (json) => {
-    api.post("/projects/", json).
-    then(response => {
-        console.log("response: ", response)
-    })
-}
-
-const auth = async (username, password) => {
-    let response = await api.post(`/api-token-auth/`, { username, password });
+    async sendProjects(json) {
+        let response = await this.axios.post("/projects/", json);
+        return response.data
+    }
     
-    return response.data;
+    async auth(username, password) {
+        let response = await this.axios.post(`/api-token-auth/`, { username, password });
+        
+        return response.data;
+    }
+    
+    async sendUsers(json) {
+        let response = await this.axios.post("/users/", json);
+        return response.data
+    }
+    
+    async refreshToken() {
+        localStorage.clear();
+        document.location.reload(true);
+    }
 }
+// const isToken = JSON.parse(localStorage.getItem("token"))
 
-const sendUsers = (json) => {
-    api.post("/users/", json).
-    then(response => {
-        console.log("response: ", response)
-    })
-}
+// const loginAuth = () => ({
+//     "Authorization": `Token ${isToken?.token}`,
+//     "Content-Type": "application/json",
+//   });
 
-const refreshToken = () => {
-    localStorage.clear();
-    document.location.reload(true);
-}
-
-export {
-    sendClients,
-    sendProjects,
-    auth,
-    sendUsers,
-    refreshToken
-}
+const api = new Api();
+export default api;

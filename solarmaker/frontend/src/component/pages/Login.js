@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { Image, Form, Row, Col, Container } from "react-bootstrap";
 import PropTypes from "prop-types";
-import { auth } from "../../service/api"
+import api from "../../service/api"
 import "./login.css";
 
 async function loginUser(username, password) {
-  return await auth(username, password);
+  return await api.auth(username, password);
 }
 
 function Footer() {

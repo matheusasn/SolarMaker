@@ -14,7 +14,7 @@ import { Link } from "react-router-dom";
 import { ExpandLess } from "@mui/icons-material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import LogoutIcon from "@mui/icons-material/Logout";
-import { refreshToken } from "../../service/api"
+import api from "../../service/api"
 import "./header.css";
 
 function ProfileButton() {
@@ -32,7 +32,7 @@ function ProfileButton() {
 
   const handleLogout = () => {
     try {
-      refreshToken();
+      api.refreshToken();
     } catch (err) {
       console.log("Coult not handle logout", err)
     }
