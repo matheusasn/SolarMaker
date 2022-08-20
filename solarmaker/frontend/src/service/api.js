@@ -4,12 +4,12 @@ const token = JSON.parse(localStorage.getItem("token"))
 
 class Api {
     constructor() {
-        console.log(token?.token)
+        console.log("aqui!!!!", token?.token)
         this.axios = axios.create({
             baseURL: "http://localhost:8000/api/v1/",
             timeout: 30000,
             headers: {
-                'Authorization': `Token ${token?.token}`
+                Authorization: `Token ${token?.token}`
             },
             withCredentials: true,
         })
@@ -37,13 +37,7 @@ class Api {
         let response = await this.axios.post("/projects/", json);
         return response.data
     }
-    
-    async auth(username, password) {
-        let response = await this.axios.post(`/api-token-auth/`, { username, password });
-        
-        return response.data;
-    }
-    
+
     async sendUsers(json) {
         let response = await this.axios.post("/users/", json);
         return response.data
