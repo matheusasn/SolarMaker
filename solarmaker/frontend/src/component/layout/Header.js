@@ -40,6 +40,11 @@ function ProfileButton() {
   const popoverBody = (
     <Popover id="popover-contained">
       <Popover.Body>
+      <Col className="m-3 ms-0 mx-4">
+            <Link to="/" onClick={handleShowPopover} className="style-options style-text-color">
+                Dashboard
+            </Link>
+        </Col>
         <Col className="m-3 ms-0 mx-4">
             <Link to="/Client" onClick={handleShowPopover} className="style-options style-text-color">
                 Clientes
@@ -95,7 +100,7 @@ function ProfileButton() {
               <div className="profile-user">Username Username</div>
               <div className="profile-role">Role</div>
             </Col>
-            <Col sm="auto" className="p-0 pt-1 responsive-desktop-username">
+            <Col sm="auto" className="p-0 responsive-desktop-username style-expand-col">
               {show ? (
                 <ExpandLess className="icon-style-expand"/>
               ) : (

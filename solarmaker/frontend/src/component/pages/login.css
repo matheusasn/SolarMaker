@@ -1,15 +1,37 @@
 #login_root {
-    height: 100vh !important;
-    background-size: cover !important;
-    background-repeat: no-repeat !important;
-    background-position: center !important;
-  }
-  .style_logo {
+  content: "";
+  position: absolute;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: #0099b2;
+}
+
+#login_root::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  background-image: url(../../img/sty.svg);
+  background-repeat: repeat-x;
+  background-position-y: center;
+}
+
+.style-card-logo{
+  background-color: transparent !important;
+  border: none !important;
+}
+
+.style_logo {
     block-size: 11.5rem;
     margin: 30px 0px 20px;
-  }
+}
   
-  .input_form {
+.input_form {
     width: 154px;
     height: 38px;
     background: transparent linear-gradient(180deg, #ff7a00 0%, #ff7a00 100%) 0%
@@ -21,15 +43,15 @@
     letter-spacing: 0px;
     color: #ffffff;
     opacity: 1;
-  }
+}
   
-  .input_form:hover {
+.input_form:hover {
     border-color: transparent;
     border-width: 2px;
     border-radius: 5px;
-  }
+}
   
-  .footer_login {
+.footer_login {
     position: fixed;
     left: 0;
     bottom: 0;
@@ -42,9 +64,9 @@
     --bs-gutter-y: 0.7rem !important;
     margin-right: 0px;
     margin-left: 0px;
-  }
+}
   
-  .style_container_form {
+.style_container_form {
     background-color: #eaeaea;
     width: 24rem !important;
     display: flex;
@@ -52,38 +74,38 @@
     flex-direction: column;
     align-items: center;
     border-radius: 0 0 8px 8px;
-  }
+}
   
-  .title_input h1 {
+.title_input h1 {
     font: 300 24px / 30px Lato, sans-serif;
     text-decoration: none solid #ff7a00;
     color: #ff7a00;
-  }
+}
   
-  .form_style {
+.form_style {
     height: 20rem;
-  }
+}
   
-  .invalid_message {
+.invalid_message {
     color: red;
     margin-left: 10px;
-  }
+}
   
-  .box_form:focus {
+.box_form:focus {
     box-shadow: 0 0 0 0.1rem #ff7a00 !important;
+}
+  
+@media only screen and (max-width: 580px) {
+  .footer_login {
+    font-size: 12px;
   }
-  
-  @media only screen and (max-width: 580px) {
-    .footer_login {
-      font-size: 12px;
-    }
-  
-    .style_logo {
-      block-size: 9.5rem;
-    }
-  
-    .style_container_form {
-      width: 20rem !important;
-    }
+
+  .style_logo {
+    block-size: 9.5rem;
   }
+
+  .style_container_form {
+    width: 20rem !important;
+  }
+}
   

@@ -1,6 +1,8 @@
 .title-style {
-    font-weight: bold;
-    color: white
+    font-weight: bold !important;
+    color: white;
+    font-weight: 700 !important;
+    font-size: 20px
 }
 
 .card-style {
@@ -23,4 +25,9 @@
     width: 18px !important;
     margin-right: 8px;
     color: #ff7a00;
+}
+
+.h3-color{
+    color: #58595b;
+    font-weight: 600;
 }
