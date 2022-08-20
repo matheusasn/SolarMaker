@@ -1,15 +1,15 @@
 import axios from "axios"
 
-const token = JSON.parse(localStorage.getItem("token"))
+const acess_token = JSON.parse(localStorage.getItem("token"))
 
 class Api {
     constructor() {
-        console.log("aqui!!!!", token?.token)
+        console.log("aqui!!!!", acess_token?.token)
         this.axios = axios.create({
             baseURL: "http://localhost:8000/api/v1/",
             timeout: 30000,
             headers: {
-                Authorization: `Token ${token?.token}`
+                "Authorization": `Token ${acess_token?.token}`
             },
             withCredentials: true,
         })
@@ -18,8 +18,7 @@ class Api {
                 return response;
             },
             async (error) => {
-                const acess_token = localStorage.getItem("token")
-                if (error.response.status === 401 && acess_token) {
+                if (error.response.status === 401 && acess_token.token) {
                     // this.refreshToken();
                     console.log(error.response.status)
                 }

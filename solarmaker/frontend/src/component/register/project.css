@@ -5,17 +5,17 @@
 }
 
 .nav-link.active {
-    color: #da5c01 !important;
+    color: #ff7a00 !important;
     background-color: #fff !important;
-    border-color: #da5c01 #da5c01 #fff !important;
+    border-color: #ff7a00 #ff7a00 #fff !important;
     
 }
 
 .nav-item button {
     background: white !important;
-    border-color: #fff #fff #da5c01 !important;
+    border-color: #fff #fff #ff7a00 !important;
 }
 
 .nav-tabs {
-    border-bottom: 1px solid #da5c01;
+    border-bottom: 1px solid #ff7a00;
 }

@@ -1,38 +1,47 @@
 .header {
-    background-color: #29304a;
+    background-color: #fff;
     min-height: 60px;
     height: 60px;
   }
   
 .profile-button {
-    border-radius: 100px !important;
-    background-color: #e8e3df !important;
-    border-color: #e8e3df !important;
+    border-radius: 10px !important;
+    background-color: #fff !important;
+    border-color: #fff !important;
+    border: solid 1px #ff7a00 !important;
+    color: #ff7a00 !important;
+}
+  
+.profile-button:hover {
+    border-radius: 10px !important;
+    background-color: #fff !important;
+    border-color: #fff !important;
+    border: solid 1px #ffb46e !important;
+    color: #ffb46e !important;
+}
+
+.profile-button:focus {
+    box-shadow: none !important;
+}
+  
+.style-logo{
+    color: #58595b;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.67;
+    letter-spacing: .3px;
 }
   
 .profile-user {
     font: normal normal bold 12px/15px Montserrat !important;
     letter-spacing: 0 !important;
-    color: #333333 !important;
     text-align: left !important;
 }
   
 .profile-role {
     font: normal normal bold 12px/15px Montserrat !important;
     letter-spacing: 0 !important;
-    color: #333333 !important;
     text-align: left !important;
-}
-  
-.profile-button:hover {
-    background-color: #eaeaea !important;
-    border-color: #eaeaea !important;
-}
-  
-.profile-button:focus {
-    background-color: #e8e3df !important;
-    border-color: #e8e3df !important;
-    box-shadow: none !important;
 }
   
 .container-btn-profile {

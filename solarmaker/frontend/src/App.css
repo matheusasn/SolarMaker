@@ -8,10 +8,18 @@
   color: white
 }
 
+.style-text-color {
+  color: #ff7a00;
+  text-decoration: none !important; 
+}
+
+.style-text-color:hover {
+  color: #ffb46e
+}
 
 .save-button-form, .cancel-button-form {
   width: 100px;
-  background: transparent linear-gradient(180deg, #da5c01 0%, #da5c01 100%) 0%
+  background: transparent linear-gradient(180deg, #ff7a00 0%, #ff7a00 100%) 0%
     0% no-repeat padding-box;
   border: transparent !important;
   border-width: 1px;

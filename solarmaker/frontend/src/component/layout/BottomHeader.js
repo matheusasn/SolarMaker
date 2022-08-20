@@ -3,7 +3,7 @@ import { Navbar, Container } from "react-bootstrap";
 
 function BottomHeader(props) {
   return (
-    <Navbar className="justify-content-between mb-4" style={{background: "#DA5C01"}}>
+    <Navbar className="justify-content-between mb-4" style={{background: "#ff7a00"}}>
       <Container>{props.children}</Container>
     </Navbar>
   );

@@ -12,7 +12,7 @@
   .input_form {
     width: 154px;
     height: 38px;
-    background: transparent linear-gradient(180deg, #da5c01 0%, #da5c01 100%) 0%
+    background: transparent linear-gradient(180deg, #ff7a00 0%, #ff7a00 100%) 0%
       0% no-repeat padding-box;
     border-color: transparent;
     border-width: 1px;
@@ -34,7 +34,7 @@
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: #da5c01;
+    background-color: #ff7a00;
     font-size: 14px;
     color: #fff;
     text-align: center;
@@ -56,8 +56,8 @@
   
   .title_input h1 {
     font: 300 24px / 30px Lato, sans-serif;
-    text-decoration: none solid #da5c01;
-    color: #da5c01;
+    text-decoration: none solid #ff7a00;
+    color: #ff7a00;
   }
   
   .form_style {
@@ -70,7 +70,7 @@
   }
   
   .box_form:focus {
-    box-shadow: 0 0 0 0.1rem #da5c01 !important;
+    box-shadow: 0 0 0 0.1rem #ff7a00 !important;
   }
   
   @media only screen and (max-width: 580px) {

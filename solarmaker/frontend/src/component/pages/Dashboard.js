@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import { Navbar, Row, Col, Button, Container, Card } from "react-bootstrap";
+import { Navbar, Row, Col, Button, Container, Card, Popover, ButtonToolbar, OverlayTrigger } from "react-bootstrap";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import BottomHeader from "../layout/BottomHeader";
 import TableCustom from "../table/TableCustom";
 import EditIcon from "@mui/icons-material/Edit";
+import CheckIcon from "@mui/icons-material/Check";
+import SortIcon from "@mui/icons-material/Sort";
 import { Link } from "react-router-dom";
 
 import "./dashboard.css"
@@ -93,9 +95,139 @@ function handleColumnProjectList(handleDelete) {
   }
 
 
+function FilterPeriodButton(props) {
+  const handleCheck = (value) => {
+    if (value !== "") {
+      props.setCheckPeriod(value);
+    } else {
+      props.setCheckPeriod(null);
+    }
+  };
+  
+  const popoverBody = (
+    <Popover id="popover-contained" title="Popover bottom">
+      <Popover.Body>
+        <Row
+          className="p-1"
+          onClick={() => {
+            handleCheck("noFilter");
+          }}
+        >
+          <Col className="px-1 check-icon-style" sm="auto">
+            <CheckIcon
+              className={
+                props.checkPeriod === "noFilter"
+                  ? "check-icon"
+                  : "check-icon-hidden"
+              }
+            />
+          </Col>
+          <Col sm="auto">
+            <a href="#" className="style-text-color">
+              Sem filtro
+            </a>
+          </Col>
+        </Row>
+
+        <Row
+          className="p-1"
+          onClick={() => {
+            handleCheck("approved");
+          }}
+        >
+          <Col className="px-1 check-icon-style" sm="auto">
+            <CheckIcon
+              className={
+                props.checkPeriod === "approved"
+                  ? "check-icon"
+                  : "check-icon-hidden"
+              }
+            />
+          </Col>
+          <Col sm="auto">
+            <a href="#" className="style-text-color">
+              Aprovado
+            </a>
+          </Col>
+        </Row>
+
+         <Row
+          className="p-1"
+          onClick={() => {
+            handleCheck("analysis");
+          }}
+        >
+          <Col className="px-1 check-icon-style" sm="auto">
+            <CheckIcon
+              className={
+                props.checkPeriod === "analysis"
+                  ? "check-icon"
+                  : "check-icon-hidden"
+              }
+            />
+          </Col>
+          <Col sm="auto">
+            <a href="#" className="style-text-color">
+              Em análise
+            </a>
+          </Col>
+        </Row>
+
+        <Row
+          className="p-1"
+          onClick={() => {
+            handleCheck("Disapproved");
+          }}
+        >
+          <Col className="px-1 check-icon-style" sm="auto">
+            <CheckIcon
+              className={
+                props.checkPeriod === "Disapproved"
+                  ? "check-icon"
+                  : "check-icon-hidden"
+              }
+            />
+          </Col>
+          <Col sm="auto">
+            <a href="#" className="style-text-color">
+              Reprovado
+            </a>
+          </Col>
+        </Row> 
+      </Popover.Body>
+    </Popover>
+  );
+
+
+  return (
+    <ButtonToolbar>
+      <OverlayTrigger
+        trigger="click"
+        rootClose
+        placement="bottom"
+        overlay={popoverBody}
+        arrowOffsetTop={"none"}
+      >
+        <span id="filterPeriodButton">
+          <Row>
+            <Col className="ps-1 color-white" sm="auto">
+              <SortIcon className="pb-1" />{" "}
+              <span className="format-title">Filtrar por status</span>
+            </Col>
+          </Row>
+        </span>
+      </OverlayTrigger>
+    </ButtonToolbar>
+  );
+
+
+}
+
+
 function Dashboard() {
     var [project, setProject] = useState({ data: [], count: 0 });
     var [options, setOptions] = useState({ skip: 0, limit: 10 });
+    const [checkPeriod, setCheckPeriod] = useState(null);
 
     const handleDelete = (id) => {
     };
@@ -111,6 +243,14 @@ function Dashboard() {
                         </Col>
                     </Row>
                 </Navbar.Brand>
+                <Row>
+                  <Col sm="auto">
+                    <FilterPeriodButton
+                      setCheckPeriod={setCheckPeriod}
+                      checkPeriod={checkPeriod}
+                    />
+                  </Col>
+                </Row>
             </BottomHeader>
             {AddDashboard()}
             <div className="mt-3">

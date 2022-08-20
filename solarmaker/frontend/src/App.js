@@ -5,6 +5,7 @@ import Footer from "./component/layout/Footer";
 import MainPage from "./component/pages/MainPage"
 import Project from "./component/register/Project";
 import Login from "./component/pages/Login";
+import Client from "./component/pages/ Client";
 import useToken from "./useToken";
 import User from "./component/register/User";
 import "./App.css"
@@ -23,6 +24,7 @@ function App() {
           <Route path="/" element={<MainPage />} />
           <Route path="/NewProject" element={<Project />} />
           <Route path="/NewUser" element={<User />} />
+          <Route path="/Client" element={<Client />} />          
         </Routes>
       </Router>
       <Footer></Footer>

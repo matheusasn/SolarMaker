@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import {
   Navbar,
   Container,
-  Image,
   Button,
   Popover,
   Row,
@@ -40,18 +39,23 @@ function ProfileButton() {
 
   const popoverBody = (
     <Popover id="popover-contained">
-      <Popover.Body className="profile-options">
-        <Col className="col-options m-3 ms-0 mx-4">
-            <Link to="/NewProject" onClick={handleShowPopover} className="text-dark style-options">
+      <Popover.Body>
+        <Col className="m-3 ms-0 mx-4">
+            <Link to="/Client" onClick={handleShowPopover} className="style-options style-text-color">
+                Clientes
+            </Link>
+        </Col>
+        <Col className="m-3 ms-0 mx-4">
+            <Link to="/NewProject" onClick={handleShowPopover} className="style-options style-text-color">
                 Cadastrar Projeto
             </Link>
         </Col>
-        <Col className="col-options m-3 ms-0 mx-4">
-            <Link to="/NewUser" onClick={handleShowPopover} className="text-dark style-options">
+        <Col className="m-3 ms-0 mx-4">
+            <Link to="/NewUser" onClick={handleShowPopover} className="style-options style-text-color">
                 Cadastrar Usuario
             </Link>
         </Col>
-        <Col className="col-options m-3 ms-0 mx-4">
+        <Col className="m-3 ms-0 mx-4">
           <Row>
             <Col sm="auto px-0 ps-3">
               <LogoutIcon style={{ color: "#DB1F1F" }} />{" "}
@@ -83,10 +87,6 @@ function ProfileButton() {
         >
           <Row>
             <Col sm="auto" className="col-img-profile">
-              <Image
-                className="img-profile rounded-circle"
-                src="https://www.rbsdirect.com.br/filestore/4/8/0/0/1/1/1_65f4dfd162a4f43/1110084_5b23e1b5535d09d.jpg?w=1024&h=1024&a=c"
-              ></Image>
               <div className="profile-user mb-1 responsive-display-username">
                 Username Username
               </div>
@@ -97,9 +97,9 @@ function ProfileButton() {
             </Col>
             <Col sm="auto" className="p-0 pt-1 responsive-desktop-username">
               {show ? (
-                <ExpandLess className="dark" style={{ color: "#000" }} />
+                <ExpandLess className="icon-style-expand"/>
               ) : (
-                <ExpandMoreIcon style={{ color: "#000" }} />
+                <ExpandMoreIcon className="icon-style-expand"/>
               )}
             </Col>
           </Row>
@@ -114,7 +114,7 @@ function Header() {
     <Navbar className="header justify-content-between">
       <Container>
         <Navbar.Brand>
-          <Link to="/" className="style-dashboard"><span className="color-white">Dashboard</span></Link>
+          <Link to="/" className="style-dashboard"><span className="style-logo">SolarMaker</span></Link>
         </Navbar.Brand>
         <ProfileButton></ProfileButton>
       </Container>

@@ -8,3 +8,19 @@
     box-shadow: 2px 5px 16px 0px #adb5bd, 4px 0px 5px -4px rgba(0,0,0,0);
 }
 
+.check-icon-style {
+    width: 18px;
+}
+
+.check-icon {
+    visibility: none;
+    width: 18px !important;
+    margin-right: 8px;
+    color: #ff7a00;
+}
+.check-icon-hidden {
+    visibility: hidden;
+    width: 18px !important;
+    margin-right: 8px;
+    color: #ff7a00;
+}
