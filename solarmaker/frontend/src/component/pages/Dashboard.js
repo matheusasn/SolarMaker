@@ -17,7 +17,7 @@ function AddDashboard() {
         <Row>
             <Col>
                 <Card className="card-style" >
-                    <Card.Header className="title-style bg-success">Entrada</Card.Header>
+                    <Card.Header className="title-style" style={{ backgroundColor: "#00ad6b"}}>Entrada</Card.Header>
                     <Card.Body>
                         <div>
                             <h3>R$ 150,00</h3>
@@ -37,7 +37,7 @@ function AddDashboard() {
             </Col>
             <Col>
                 <Card className="card-style">
-                    <Card.Header className="title-style bg-info">Total</Card.Header>
+                    <Card.Header className="title-style" style={{ backgroundColor: "#48aeee"}}  >Total</Card.Header>
                     <Card.Body>
                         <div>
                             <h3>R$ 100,00</h3>
@@ -91,8 +91,8 @@ function handleColumnProjectList(handleDelete) {
         },
       },
     ];
-    return columns;
-  }
+  return columns;
+}
 
 
 function FilterPeriodButton(props) {
