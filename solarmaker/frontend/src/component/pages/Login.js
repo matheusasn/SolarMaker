@@ -75,6 +75,7 @@ function Login({ setToken }) {
     try {
       const token = await loginUser(username, password);
       setToken(token);
+      document.location.reload(true)
     } catch (err) {
       setUserName("");
       setPassword("");

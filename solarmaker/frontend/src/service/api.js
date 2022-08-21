@@ -29,6 +29,7 @@ class Api {
 
     async sendClients(json) {
         let response = await this.axios.post("/clientes/", json);
+        console.log(response);
         return response.data
     }
     
