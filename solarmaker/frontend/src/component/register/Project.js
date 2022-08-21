@@ -12,9 +12,10 @@ function Project(){
     const [clients, setClients] = useState({
         name: "",
         email: "",
+        phone_number: "",
         adress: "",
         cpf_cnpj: "",
-        responsible_name: "",
+       
     })
 
     const [project, setProject] = useState({
@@ -84,6 +85,10 @@ function Project(){
                                 <Form.Label className="style-title">Email do cliente</Form.Label>
                                 <Form.Control type="email" placeholder="Email" />
                             </Form.Group>
+                            <Form.Group className="mb-3" controlId="phone_number" required>
+                                <Form.Label className="style-title">Telefone</Form.Label>
+                                <Form.Control type="text" placeholder="Telefone" />
+                            </Form.Group>
                             <Form.Group className="mb-3" controlId="adress" required>
                                 <Form.Label className="style-title">Endereço</Form.Label>
                                 <Form.Control type="text" placeholder="Endereço"/>
@@ -91,10 +96,6 @@ function Project(){
                             <Form.Group className="mb-3" controlId="cpf_cnpj" required>
                                 <Form.Label className="style-title">CPF/CNPJ</Form.Label>
                                 <Form.Control type="number" placeholder="CPF/CNPJ" />
-                            </Form.Group>
-                            <Form.Group className="mb-3" controlId="responsible_name" required>
-                                <Form.Label className="style-title">Nome do Responsável</Form.Label>
-                                <Form.Control type="text" placeholder="Responsável"/>
                             </Form.Group>
                         </Form>
                     </Container>
