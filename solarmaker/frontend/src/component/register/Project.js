@@ -17,14 +17,15 @@ function Project(){
 
     const [project, setProject] = useState({
         project_name: "",
-        client_cpf_cnpj: "",
+        client: "",
         description: "",
-        responsible_person: "",
-        representatives: "",
-        initial_data: "",
-        final_data: "",
+        responsible: "",
+        vendor: "",
+        potency: "",
+        modules: "",
+        inverter: "",
         status: "",
-        bugget: ""
+        budget: ""
     })
 
     const handleClients = (e) => {
@@ -100,13 +101,37 @@ function Project(){
                                 <Form.Label className="style-title">Descrição</Form.Label>
                                 <Form.Control as="textarea" rows={3} />
                             </Form.Group>
-                            <Form.Group className="mb-3" controlId="responsible_person">
+                            <Form.Group className="mb-3" controlId="responsible">
                                 <Form.Label className="style-title">Nome do Responsável</Form.Label>
                                 <Form.Control type="text" placeholder="Responsável" />
                             </Form.Group>
-                            <Form.Group className="mb-3" controlId="representatives">
-                                <Form.Label className="style-title">Nome do Representante</Form.Label>
-                                <Form.Control type="text" placeholder="Representante" />
+                            <Form.Group className="mb-3" controlId="client">
+                                <Form.Label className="style-title">CPF/CNPJ</Form.Label>
+                                <Form.Control type="text" placeholder="CPF/CNPJ" />
+                            </Form.Group>
+                            <Form.Group className="mb-3" controlId="vendor">
+                                <Form.Label className="style-title">Vendedor</Form.Label>
+                                <Form.Control type="text" placeholder="Vendedor" />
+                            </Form.Group>
+                            <Form.Group className="mb-3" controlId="potency">
+                                <Form.Label className="style-title">Potencia</Form.Label>
+                                <Form.Control type="text" placeholder="Potencia" />
+                            </Form.Group>
+                            <Form.Group className="mb-3" controlId="status">
+                                <Form.Label className="style-title">Status</Form.Label>
+                                <Form.Control type="text" placeholder="Status" />
+                            </Form.Group>
+                            <Form.Group className="mb-3" controlId="modules">
+                                <Form.Label className="style-title">Modules</Form.Label>
+                                <Form.Control type="text" placeholder="bug" />
+                            </Form.Group>
+                            <Form.Group className="mb-3" controlId="inverter">
+                                <Form.Label className="style-title">Inverter</Form.Label>
+                                <Form.Control type="text" placeholder="bug" />
+                            </Form.Group>
+                            <Form.Group className="mb-3" controlId="budget">
+                                <Form.Label className="style-title">Bugget</Form.Label>
+                                <Form.Control type="text" placeholder="bug" />
                             </Form.Group>
                         </Form>
                         <div className="d-flex justify-content-end">

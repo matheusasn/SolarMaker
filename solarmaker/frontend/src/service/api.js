@@ -34,12 +34,14 @@ class Api {
     }
     
     async sendProjects(json) {
-        let response = await this.axios.post("/projects/", json);
+        let response = await this.axios.post("/projetos/", json);
+        console.log(response);
         return response.data
     }
 
     async sendUsers(json) {
         let response = await this.axios.post("/users/", json);
+        console.log(response);
         return response.data
     }
     
