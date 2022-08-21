@@ -18,11 +18,11 @@ class Client(models.Model):
 
     email = models.EmailField(max_length=100, verbose_name= 'Email')
 
-    phone_number = models.CharField(validators=[Regex().phone_regex], max_length=15, blank=True, verbose_name= 'Telefone')
-
     adress = models.CharField(max_length=255, default = "", verbose_name= 'Endereço')     
 
     cpf_cnpj = models.CharField(validators=[Regex().cpf_cnpj_regex], max_length=20, primary_key = True, verbose_name= 'CPF/CNPJ')
+    
+    responsible_name = models.CharField(max_length=255, verbose_name= 'Nome do responsável')
 
     def __str__(self):
         return self.name
