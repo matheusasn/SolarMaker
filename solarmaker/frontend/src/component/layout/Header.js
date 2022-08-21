@@ -51,6 +51,16 @@ function ProfileButton() {
             </Link>
         </Col>
         <Col className="m-3 ms-0 mx-4">
+            <Link to="/Users" onClick={handleShowPopover} className="style-options style-text-color">
+                Usuários
+            </Link>
+        </Col>
+        <Col className="m-3 ms-0 mx-4">
+            <Link to="/Projects" onClick={handleShowPopover} className="style-options style-text-color">
+                Projetos
+            </Link>
+        </Col>
+        <Col className="m-3 ms-0 mx-4">
             <Link to="/NewProject" onClick={handleShowPopover} className="style-options style-text-color">
                 Cadastrar Projeto
             </Link>

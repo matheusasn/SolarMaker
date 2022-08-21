@@ -11,7 +11,9 @@ function User(){
     const [users, setUsers] = useState({
         name: "",
         email: "",
-        cpf_cnpj: ""
+        cpf_cnpj: "",
+        telefone: "",
+        endereco: ""
     })
 
 
@@ -48,12 +50,20 @@ function User(){
                     <Container>
                         <Form onChange={(e) => handleUsers(e)}>
                             <Form.Group className="mb-3" controlId="name" required>
-                                <Form.Label className="style-title">Nome do usuario</Form.Label>
+                                <Form.Label className="style-title">Nome do usuário</Form.Label>
                                 <Form.Control type="text" placeholder="Usuario" />
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="email" required>
-                                <Form.Label className="style-title">Email do usuario</Form.Label>
+                                <Form.Label className="style-title">Email do usuário</Form.Label>
                                 <Form.Control type="email" placeholder="Email" />
+                            </Form.Group>
+                            <Form.Group className="mb-3" controlId="telefone" required>
+                                <Form.Label className="style-title">Telefone do usuário</Form.Label>
+                                <Form.Control type="text" placeholder="Telefone" />
+                            </Form.Group>
+                            <Form.Group className="mb-3" controlId="endereco" required>
+                                <Form.Label className="style-title">Endereço do usuário</Form.Label>
+                                <Form.Control type="text" placeholder="Endereco" />
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="cpf_cnpj" required>
                                 <Form.Label className="style-title">CPF</Form.Label>
