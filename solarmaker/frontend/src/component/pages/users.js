@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { Navbar, Row, Col, Form, Button } from "react-bootstrap"
+import { Navbar, Row, Col, Form, Button, Container } from "react-bootstrap"
 import BottomHeader from "../layout/BottomHeader";
 import { Link } from "react-router-dom";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import TableCustom from "../table/TableCustom"
+import TableCustom from "../table/TableCustom";
 import EditIcon from "@mui/icons-material/Edit";
-
+import AddIcon from "@mui/icons-material/Add";
+// import api from "../../service/api"
 import "./users.css"
 
 function handleColumnUserList(handleDelete) {
@@ -67,7 +68,7 @@ function User() {
                         <Col>
                             <Link className="text-decoration-none" to="/">
                                 <ArrowBackIcon className="text-light" />
-                                <span className="text-light">Dashboard</span>
+                                <span className="text-light">Usuários</span>
                             </Link>
                         </Col>
                     </Row>
@@ -82,8 +83,18 @@ function User() {
                   </Col>
                 </Row>
             </BottomHeader>
-            <h1>USUÁRIOS</h1>
-            <div className="mt-3">
+            <Container>
+              <div className="container-add">
+                  <Link to={"/NewUser"}>
+                    <Button className="add-button">
+                      <div className="d-flex div-button">
+                        <span>Usuário</span>
+                        <AddIcon />
+                      </div>
+                    </Button>
+                  </Link>
+              </div>
+              <div className="mt-3">
                 <TableCustom
                     data={user.data}
                     columns={handleColumnUserList(handleDelete)}
@@ -92,7 +103,8 @@ function User() {
                     }}
                     total={user.count}
                 />
-            </div>
+              </div> 
+            </Container>
         </>
     )
 }

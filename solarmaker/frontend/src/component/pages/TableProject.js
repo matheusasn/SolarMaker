@@ -7,9 +7,9 @@ import TableCustom from "../table/TableCustom"
 import EditIcon from "@mui/icons-material/Edit";
 import AddIcon from "@mui/icons-material/Add";
 
-import "./client.css"
+import "./tableProject.css"
 
-function handleColumnClientList(handleDelete) {
+function handleColumnTableProjectList(handleDelete) {
     const columns = [
       {
         name: "name",
@@ -53,8 +53,8 @@ function handleColumnClientList(handleDelete) {
   return columns;
 }
 
-function Client() {
-    var [client, setClient] = useState({ data: [], count: 0 });
+function Project() {
+    var [project, setProject] = useState({ data: [], count: 0 });
     var [options, setOptions] = useState({ skip: 0, limit: 10 });
 
     const handleDelete = (id) => {
@@ -68,7 +68,7 @@ function Client() {
                         <Col>
                             <Link className="text-decoration-none" to="/">
                                 <ArrowBackIcon className="text-light" />
-                                <span className="text-light">Clientes</span>
+                                <span className="text-light">Projetos</span>
                             </Link>
                         </Col>
                     </Row>
@@ -88,7 +88,7 @@ function Client() {
                 <Link to={"/NewProject"}>
                   <Button className="add-button">
                     <div className="d-flex div-button">
-                      <span>Cliente</span>
+                      <span>Projeto</span>
                       <AddIcon />
                     </div>
                   </Button>
@@ -96,12 +96,12 @@ function Client() {
               </div>
               <div className="mt-3">
                   <TableCustom
-                      data={client.data}
-                      columns={handleColumnClientList(handleDelete)}
+                      data={project.data}
+                      columns={handleColumnTableProjectList(handleDelete)}
                       onPaginationChanged={(skip, limit) => {
                       setOptions({ skip, limit });
                       }}
-                      total={client.count}
+                      total={project.count}
                   />
               </div>
             </Container>
@@ -109,4 +109,4 @@ function Client() {
     )
 }
 
-export default Client
+export default Project

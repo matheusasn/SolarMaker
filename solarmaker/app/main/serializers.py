@@ -4,7 +4,7 @@ from .models import Project, Client, ClientDocument, ProjectDocument
 class ClientSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Client
-        fields = ['name', 'email', 'phone_number', 'adress', 'cpf_cnpj']
+        fields = ['name', 'email', 'adress', 'cpf_cnpj', 'responsible_name']
 
 class ClientDocumentSerializer(serializers.ModelSerializer):
     class Meta:

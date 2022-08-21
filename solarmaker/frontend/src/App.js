@@ -1,5 +1,7 @@
 import "react-bootstrap/dist/react-bootstrap.min.js";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { ReactNotifications } from "react-notifications-component";
+import "react-notifications-component/dist/theme.css";
 import Header from "./component/layout/Header";
 import Footer from "./component/layout/Footer";
 import MainPage from "./component/pages/MainPage"
@@ -9,7 +11,7 @@ import Client from "./component/pages/Client";
 import useToken from "./useToken";
 import User from "./component/register/User";
 import Users from "./component/pages/users";
-import Projects from "./component/pages/projects";
+import TableProject from "./component/pages/TableProject";
 import "./App.css"
 
 function App() {
@@ -22,13 +24,14 @@ function App() {
     <div className="App">
       <Router>
         <Header></Header>
+        <ReactNotifications />
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="/NewProject" element={<Project />} />
           <Route path="/NewUser" element={<User />} />
           <Route path="/Client" element={<Client />} /> 
           <Route path="/Users" element={<Users />} />
-          <Route path="/Projects" element={<Projects />} />          
+          <Route path="/Projects" element={<TableProject />} />          
         </Routes>
       </Router>
       <Footer></Footer>

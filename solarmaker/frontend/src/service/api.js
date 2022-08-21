@@ -50,12 +50,6 @@ class Api {
         document.location.reload(true);
     }
 }
-// const isToken = JSON.parse(localStorage.getItem("token"))
-
-// const loginAuth = () => ({
-//     "Authorization": `Token ${isToken?.token}`,
-//     "Content-Type": "application/json",
-//   });
 
 const api = new Api();
 export default api;

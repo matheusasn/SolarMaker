@@ -45,3 +45,34 @@
 .save-button-form:focus{
   border: transparent;
 }
+
+.container-add {
+  background-color: #eaeaea !important;
+  height: 40px;
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+}
+
+.add-button {
+  background-color: transparent !important;
+  border: none !important;
+  padding-left: 16px;
+}
+.add-button:focus {
+  box-shadow: 0 0 0 0 !important;
+  border: 0 none !important;
+}
+
+.div-button {
+  color: #ff7a00;
+  font-size: 18px;
+  font: normal normal bold 12px/15px;
+  align-items: center;
+}
+
+.div-button span {
+  margin-top: 3px;
+  margin-right: 6px;
+}

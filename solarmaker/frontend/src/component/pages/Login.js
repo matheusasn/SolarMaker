@@ -84,8 +84,6 @@ function Login({ setToken }) {
     }
   };
 
-  //var backgroundStyle = `url(${process.env.PUBLIC_URL}/background.jpg)`;
-
   return (
     <div id="login_root">
       <ContainerForm

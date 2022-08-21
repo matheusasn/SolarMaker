@@ -47,27 +47,17 @@ function ProfileButton() {
         </Col>
         <Col className="m-3 ms-0 mx-4">
             <Link to="/Client" onClick={handleShowPopover} className="style-options style-text-color">
-                Clientes
+              Gerenciar Clientes
             </Link>
         </Col>
         <Col className="m-3 ms-0 mx-4">
             <Link to="/Users" onClick={handleShowPopover} className="style-options style-text-color">
-                Usuários
+              Gerenciar Usuários
             </Link>
         </Col>
         <Col className="m-3 ms-0 mx-4">
             <Link to="/Projects" onClick={handleShowPopover} className="style-options style-text-color">
-                Projetos
-            </Link>
-        </Col>
-        <Col className="m-3 ms-0 mx-4">
-            <Link to="/NewProject" onClick={handleShowPopover} className="style-options style-text-color">
-                Cadastrar Projeto
-            </Link>
-        </Col>
-        <Col className="m-3 ms-0 mx-4">
-            <Link to="/NewUser" onClick={handleShowPopover} className="style-options style-text-color">
-                Cadastrar Usuario
+              Gerenciar Projetos
             </Link>
         </Col>
         <Col className="m-3 ms-0 mx-4">
@@ -103,12 +93,12 @@ function ProfileButton() {
           <Row>
             <Col sm="auto" className="col-img-profile">
               <div className="profile-user mb-1 responsive-display-username">
-                Username Username
+                Admin
               </div>
             </Col>
             <Col className="responsive-desktop-username">
-              <div className="profile-user">Username Username</div>
-              <div className="profile-role">Role</div>
+              <div className="profile-user">Usuário SolarMaker</div>
+              <div className="profile-role">admin</div>
             </Col>
             <Col sm="auto" className="p-0 responsive-desktop-username style-expand-col">
               {show ? (

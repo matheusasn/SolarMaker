@@ -30,11 +30,12 @@ function User(){
 
     const handleSendNewUsers = () => {
         
-        if(api.sendUsers(users)){
-            return alert("Usuário criado com sucesso")
-        }else{
-            return alert("Erro ao criar Usuário")
-        }
+        api.sendUsers(users)
+        // if(){
+        //     return alert("Usuário criado com sucesso")
+        // }else{
+        //     return alert("Erro ao criar Usuário")
+        // }
 
     }
 

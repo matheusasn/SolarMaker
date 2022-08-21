@@ -68,7 +68,11 @@ function Client() {
                         <Col>
                             <Link className="text-decoration-none" to="/">
                                 <ArrowBackIcon className="text-light" />
+<<<<<<< Updated upstream:solarmaker/frontend/src/component/pages/Client.js
+                                <span className="text-light">Dashboard</span>
+=======
                                 <span className="text-light">Clientes</span>
+>>>>>>> Stashed changes:solarmaker/frontend/src/component/pages/ Client.js
                             </Link>
                         </Col>
                     </Row>
