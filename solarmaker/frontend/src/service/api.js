@@ -32,6 +32,13 @@ class Api {
         console.log(response);
         return response.data
     }
+
+    async getClients(json) {
+        let response = await this.axios.get("/clientes/", json);
+        console.log(response);
+        return response.data
+    }
+    
     
     async sendProjects(json) {
         let response = await this.axios.post("/projetos/", json);
