@@ -9,6 +9,7 @@ class TestPutUser:
     new_user = {
         "username": "atualizado",
         "email": "me@me",
+        
         "password": "me" 
     }
 
