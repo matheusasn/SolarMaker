@@ -1,16 +1,20 @@
-from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import viewsets, permissions
-from rest_framework.permissions import IsAuthenticated
-
+from rest_framework import viewsets
+from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from . import models, serializers
+
 
 class Teste(APIView):
     def get(self, request, format=None):
         return Response({
             'hello':'word'
         })
+
+class UserManagerViewSet(viewsets.ModelViewSet):
+    serializer_class = serializers.UserManagerSerializer
+    queryset = serializers.UserManagerSerializer.Meta.model.objects.all()
+    permission_classes = [IsAdminUser]
 
 class ClientViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.ClientSerializer
