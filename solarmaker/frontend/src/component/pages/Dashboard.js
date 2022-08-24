@@ -1,17 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Navbar, Row, Col, Button, Container, Card, Popover, ButtonToolbar, OverlayTrigger } from "react-bootstrap";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import BottomHeader from "../layout/BottomHeader";
-import TableCustom from "../table/TableCustom";
+import {TableProjectDashboard} from "../pages/TableProject";
 import EditIcon from "@mui/icons-material/Edit";
 import CheckIcon from "@mui/icons-material/Check";
 import SortIcon from "@mui/icons-material/Sort";
 import { Link } from "react-router-dom";
+import api from "../../service/api"
 
 import "./dashboard.css"
 
-
 function AddDashboard() {
+
+  const [value, setValue] = useState (0)
+  const [data,setData] = useState()
+  useEffect(() => {
+    api.getProjects().then((res) => {
+     setData(res)
+    });
+  }, []);
+
+  //value.map((data) => {
+  //  setValue(value + data.budget)
+  //})
+
     return (
       <Container>
         <Row>
@@ -20,7 +33,7 @@ function AddDashboard() {
                     <Card.Header className="title-style" style={{ backgroundColor: "#00ad6b"}}>Entrada</Card.Header>
                     <Card.Body>
                         <div>
-                            <h3 className="h3-color">R$ 150,00</h3>
+                            <h3 className="h3-color">R$ {value}</h3>
                         </div>
                     </Card.Body>
                 </Card>
@@ -30,7 +43,7 @@ function AddDashboard() {
                     <Card.Header className="title-style bg-danger">Saida</Card.Header>
                     <Card.Body>
                         <div>
-                            <h3 className="h3-color">R$ 50,00</h3>
+                            <h3 className="h3-color">R$ 00,00</h3>
                         </div>
                     </Card.Body>
                 </Card>
@@ -40,7 +53,7 @@ function AddDashboard() {
                     <Card.Header className="title-style" style={{ backgroundColor: "#48aeee"}}  >Total</Card.Header>
                     <Card.Body>
                         <div>
-                            <h3 className="h3-color">R$ 100,00</h3>
+                            <h3 className="h3-color">R$ {value}</h3>
                         </div>
                     </Card.Body>
                 </Card>
@@ -253,16 +266,7 @@ function Dashboard() {
                 </Row>
             </BottomHeader>
             {AddDashboard()}
-            <div className="mt-3">
-                <TableCustom
-                    data={project.data}
-                    columns={handleColumnProjectList(handleDelete)}
-                    onPaginationChanged={(skip, limit) => {
-                    setOptions({ skip, limit });
-                    }}
-                    total={project.count}
-                />
-            </div>
+            {<TableProjectDashboard/>}
         </>
     );
 }

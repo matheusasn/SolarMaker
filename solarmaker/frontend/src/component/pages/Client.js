@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Navbar, Row, Col, Form, Button, Container } from "react-bootstrap"
 import BottomHeader from "../layout/BottomHeader";
 import { Link } from "react-router-dom";
@@ -6,21 +6,30 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import TableCustom from "../table/TableCustom"
 import EditIcon from "@mui/icons-material/Edit";
 import AddIcon from "@mui/icons-material/Add";
+import DeleteIcon from "@mui/icons-material/Delete";
+import api from "../../service/api"
 
 import "./client.css"
 
 function handleColumnClientList(handleDelete) {
     const columns = [
       {
-        name: "name",
-        selector: (row) => {
-          if (navigator.language === "pt-BR") {
-            return row.name_pt;
-          } else {
-            return row.name_en;
-          }
-        },
+        name: "Nome",
+        selector: (row) =>  row.name,
       },
+      {
+        name: "Email",
+        selector: (row) =>  row.email,
+      },
+      {
+        name: "Telefone",
+        selector: (row) =>  row.phone_number,
+      },
+      {
+        name: "CPF/CNPJ",
+        selector: (row) =>  row.cpf_cnpj,
+      },
+     
       {
         name: "Ações",
         elector: (row) => row.actions,
@@ -31,16 +40,10 @@ function handleColumnClientList(handleDelete) {
               to="/"
               state={{ id: row._id }}
             >
-              <EditIcon className="me-3" type="button" />
+              <EditIcon className="me-3" type="button" style={{color: "#ff7a00"}}/>
             </Link>
-            <Button
-            //   id={row._id}
-            //   handleDelete={handleDelete}
-            //   title={t("deleteHealthInsurance")}
-            //   description={t("deleteHealthInsuranceMsg", {
-            //     name: navigator.language === "pt-BR" ? row.name_pt : row.name_en,
-            //   })}
-            />
+            
+            <DeleteIcon />
           </div>
         ),
         maxWidth: "130px",
@@ -57,6 +60,11 @@ function Client() {
     var [client, setClient] = useState({ data: [], count: 0 });
     var [options, setOptions] = useState({ skip: 0, limit: 10 });
 
+    useEffect(() => {
+      api.getClients().then((res) => {
+        setClient({ data: res, count: res.len });
+      });
+    }, [options]);
     const handleDelete = (id) => {
     };
 
