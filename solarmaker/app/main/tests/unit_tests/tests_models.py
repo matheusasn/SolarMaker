@@ -1,5 +1,7 @@
 from django.test import TestCase
 
+from solarmaker.app.main.models import Client
+
 
 #Creat your tests here
 

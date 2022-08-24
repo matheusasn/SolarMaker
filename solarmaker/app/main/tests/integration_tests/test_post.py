@@ -8,16 +8,28 @@ class TestPostClient:
     headers ={'Authorization': 'Token 658a0fa9b5e469a22792558a413e8f9705b7a414'} 
     url_base_clients = 'http://localhost:8000/api/v1/clientes/'
 
-    new_client = {
+    new_client1 = {
         "name": "Kamila Silva",
         "email": "kamilas@gmail.com",
         "phone_number": "(83)99158-0844",
         "adress":"Rua 5",
         "cpf_cnpj": "70352072450"
     }
-    def test_post_client(self):
+    def test_post_client1(self):
         
-        resultado = requests.post(url=self.url_base_clients, headers = self.headers, data=self.new_client)
+        resultado = requests.post(url=self.url_base_clients, headers = self.headers, data=self.new_client1)
+        assert resultado.status_code == 201
+    
+    new_client2 = {
+        "name": "Kamila Silva",
+        "email": "kamilas@gmail.com",
+        "phone_number": "(83)99158-0844",
+        "adress":"Rua 5",
+        "cpf_cnpj": "70352072440"
+    }
+    def test_post_client2(self):
+        
+        resultado = requests.post(url=self.url_base_clients, headers = self.headers, data=self.new_client2)
         assert resultado.status_code == 201
     
     new_client_email_errado = {
@@ -57,56 +69,74 @@ class TestPostProject:
     headers ={'Authorization': 'Token 658a0fa9b5e469a22792558a413e8f9705b7a414'} 
     url_base_projects = 'http://localhost:8000/api/v1/projetos/'
 
-    new_project = {
+    new_project1 = {
         "project_name": "SolarKamila",
-        "client": "70352072490",
-        "description": "projeto kamila",
-        "responsible": "pessoa da equipe ?",
-        "vendor": "bruno",
-        "potency": 5,
-        "modules": "qual dado",
-        "inverter": "qual dado",
+        "client": "70352072450",
+        "description": "nao tem descricao",
+        "responsible": "pessoa 1",
+        "vendor": "pessoa 2",
+        "potency": 0.0,
+        "modules": "modulo x",
+        "inverter": "nao sei",
         "status": "Em andamento",
-        "budget": 2
-}
+        "budget": 1.0
+        }
 
 
-    def test_post_project(self):
-        resultado = requests.post(url=self.url_base_projects, headers = self.headers, data=self.new_project)
+    def test_post_project1(self):
+        resultado = requests.post(url=self.url_base_projects, headers = self.headers, data=self.new_project1)
+        assert resultado.status_code == 201
+    
+    new_project2 = {
+        "project_name": "SolarKamila",
+        "client": "70352072450",
+        "description": "nao tem descricao",
+        "responsible": "pessoa 1",
+        "vendor": "pessoa 2",
+        "potency": 0.0,
+        "modules": "modulo x",
+        "inverter": "nao sei",
+        "status": "Em andamento",
+        "budget": 1.0
+        }
+
+
+    def test_post_project2(self):
+        resultado = requests.post(url=self.url_base_projects, headers = self.headers, data=self.new_project2)
         assert resultado.status_code == 201
     
     new_project_cliente_n_existe = {
         "project_name": "SolarKamila",
-        "client": "70352072495",
-        "description": "projeto kamila",
-        "responsible": "pessoa da equipe ?",
-        "vendor": "bruno",
-        "potency": 5,
-        "modules": "qual dado",
-        "inverter": "qual dado",
+        "client": "70352072455",
+        "description": "nao tem descricao",
+        "responsible": "pessoa 1",
+        "vendor": "pessoa 2",
+        "potency": 0.0,
+        "modules": "modulo x",
+        "inverter": "nao sei",
         "status": "Em andamento",
-        "budget": 2
+        "budget": 1.0
 }
 
-    def test_post_project(self):
+    def test_post_project_cliente_nao_existe(self):
         resultado = requests.post(url=self.url_base_projects, headers = self.headers, data=self.new_project_cliente_n_existe )
-        assert resultado.json()['client'] == ['Pk inválido "70352072495" - objeto não existe.']
+        assert resultado.json()['client'] == ['Pk inválido "70352072455" - objeto não existe.']
         assert resultado.status_code == 400
     
     new_project_dado_em_branco = {
         "project_name": "SolarKamila",
-        "client": "7035207249o",
-        "description": "projeto kamila",
-        "responsible": "pessoa da equipe ?",
-        "vendor": "bruno",
-        "potency": 5,
-        "modules": "qual dado",
-        "inverter": "qual dado",
+        "client": "70352072450",
+        "description": "nao tem descricao",
+        "responsible": "pessoa 1",
+        "vendor": "pessoa 2",
+        "potency": 0.0,
+        "modules": "modulo x",
+        "inverter": "nao sei",
         "status": "Em andamento",
         "budget": ""
 }
 
-    def test_post_project(self):
+    def test_post_project_sem_budget(self):
         resultado = requests.post(url=self.url_base_projects, headers = self.headers, data=self.new_project_dado_em_branco )
         assert resultado.json()['budget'] == ['Um número válido é necessário.']
         assert resultado.status_code == 400
