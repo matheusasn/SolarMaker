@@ -16,7 +16,7 @@ class Client(models.Model):
 
     name = models.CharField(max_length=255, verbose_name= 'Nome completo')
 
-    email = models.EmailField(max_length=100, verbose_name= 'Email')
+    email = models.EmailField(unique = True, max_length=100, verbose_name= 'Email')
 
     phone_number = models.CharField(validators=[Regex().phone_regex], max_length=15, blank=True, verbose_name= 'Telefone')
 

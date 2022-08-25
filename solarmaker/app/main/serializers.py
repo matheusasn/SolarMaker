@@ -1,12 +1,13 @@
+from enum import unique
 from rest_framework import serializers
 from django.contrib.auth.models import User
 from .models import Project, Client, ClientDocument, ProjectDocument
 from django.contrib.auth.hashers import make_password
-from .models import Project, Client, ClientDocument, ProjectDocument
-
+from rest_framework.validators import UniqueValidator
 
 class UserManagerSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True, required=True)
+    email = serializers.EmailField(validators=[UniqueValidator(queryset=User.objects.all())]) 
     class Meta:
         model = User
         model.is_staff = True
