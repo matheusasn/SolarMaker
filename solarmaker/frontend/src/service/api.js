@@ -49,6 +49,11 @@ class Api {
         return response.data
     }
 
+    async deleteProjects(id) {
+        let response = await this.axios.delete(`/projetos/${id}`);
+        return response.data
+    }
+
     async sendUsers(json) {
         let response = await this.axios.post("/users/", json);
         return response.data

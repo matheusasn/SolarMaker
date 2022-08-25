@@ -12,18 +12,19 @@ import api from "../../service/api"
 import "./dashboard.css"
 
 function AddDashboard() {
-
-  const [value, setValue] = useState (0)
+  
   const [data,setData] = useState()
+
   useEffect(() => {
     api.getProjects().then((res) => {
      setData(res)
     });
   }, []);
-
-  //value.map((data) => {
-  //  setValue(value + data.budget)
-  //})
+  
+  const value = data?.map(item => item.budget).reduce((prev, curr) => prev + curr, 0).toLocaleString('pt-BR', {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  })
 
     return (
       <Container>

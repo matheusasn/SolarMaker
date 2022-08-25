@@ -43,7 +43,7 @@ function handleColumnClientList(handleDelete) {
               <EditIcon className="me-3" type="button" style={{color: "#ff7a00"}}/>
             </Link>
             
-            <DeleteIcon />
+            <DeleteIcon onClick={handleDelete} />
           </div>
         ),
         maxWidth: "130px",

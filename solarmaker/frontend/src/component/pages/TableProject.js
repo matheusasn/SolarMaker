@@ -10,6 +10,7 @@ import api from "../../service/api"
 import AddIcon from "@mui/icons-material/Add";
 
 import "./tableProject.css"
+import notifications from "../../util/notifications";
 
 function handleColumnProjectList(handleDelete) {
     const columns = [
@@ -45,12 +46,12 @@ function handleColumnProjectList(handleDelete) {
             <Link
               className="editIcon"
               to="/"
-              state={{ id: row._id }}
+              state={{ id: row.id }}
             >
             <EditIcon className="me-3" type="button" style={{color: "#ff7a00"}}/>
             </Link>
             
-            <DeleteIcon />
+            <DeleteIcon id={row.id} onClick={handleDelete}/>
           </div>
         ),
         maxWidth: "130px",
@@ -64,6 +65,7 @@ function handleColumnProjectList(handleDelete) {
 }
 
 function Project() {
+
     var [project, setProject] = useState({ data: [], count: 0 });
     var [options, setOptions] = useState({ skip: 0, limit: 10 });
 
@@ -73,7 +75,14 @@ function Project() {
       });
     }, [options]);
     
-    const handleDelete = (id) => {
+    const handleDelete = (event) => {
+     /*  api.deleteProject(id).then((res) => {
+        console.log(res)
+        notifications.addSuccessNotification("Deletado com sucesso")
+      }).catch((e) => {
+        notifications.addErrorNotification("Erro", e)
+      }) */
+      //console.log("Elemtne", event.target.id)
     };
 
     return (

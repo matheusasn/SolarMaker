@@ -60,7 +60,10 @@ function User(){
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="telefone" required>
                                 <Form.Label className="style-title">Telefone do usuário</Form.Label>
-                                <Form.Control type="text" placeholder="Telefone" />
+                                <Form.Control 
+                                    type="text" 
+                                    placeholder="Telefone" 
+                                />
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="endereco" required>
                                 <Form.Label className="style-title">Endereço do usuário</Form.Label>

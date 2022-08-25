@@ -27,6 +27,9 @@ const customStyles = {
 };
 
 function TableCustom(props) {
+
+  //console.log("pros",props)
+
   const [skip, setSkip] = useState(0);
   const [limit, setLimit] = useState(10);
 
