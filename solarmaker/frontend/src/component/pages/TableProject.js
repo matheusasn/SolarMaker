@@ -36,7 +36,10 @@ function handleColumnProjectList(handleDelete) {
       },
       {
         name: "Valor",
-        selector: (row) => row.budget
+        selector: (row) => row.budget.toLocaleString('pt-BR', {
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2
+        })
       },
       {
         name: "Ações",
@@ -51,7 +54,7 @@ function handleColumnProjectList(handleDelete) {
             <EditIcon className="me-3" type="button" style={{color: "#ff7a00"}}/>
             </Link>
             
-            <DeleteIcon id={row.id} onClick={handleDelete}/>
+            <button id={row.id} onClick={handleDelete}></button>
           </div>
         ),
         maxWidth: "130px",
@@ -76,13 +79,17 @@ function Project() {
     }, [options]);
     
     const handleDelete = (event) => {
-     /*  api.deleteProject(id).then((res) => {
+      let id = event.target.id
+       api.deleteProjects(id).then((res) => {
         console.log(res)
         notifications.addSuccessNotification("Deletado com sucesso")
+        api.getProjects().then((res) => {
+          setProject({ data: res, count: res.len });
+        });
       }).catch((e) => {
         notifications.addErrorNotification("Erro", e)
-      }) */
-      //console.log("Elemtne", event.target.id)
+      }) 
+      console.log("Elemtne", event.target.id)
     };
 
     return (

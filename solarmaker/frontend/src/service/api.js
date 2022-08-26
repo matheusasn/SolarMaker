@@ -50,7 +50,8 @@ class Api {
     }
 
     async deleteProjects(id) {
-        let response = await this.axios.delete(`/projetos/${id}`);
+        console.log(id)
+        let response = await this.axios.delete(`/projetos/${id}/`);
         return response.data
     }
 
