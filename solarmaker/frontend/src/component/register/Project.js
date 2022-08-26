@@ -57,10 +57,10 @@ function Project(){
         api
         .sendClients(clients)
         .then((res) => {
-            toast.success("Cliente cadastrado com sucesso")
+            toast.success("Cliente cadastrado com sucesso!")
         })
         .catch((e) => {
-            toast.error(`Erro ao cadastrar cliente`);
+            toast.error(`Erro ao cadastrar cliente!`);
         });
     }
 
