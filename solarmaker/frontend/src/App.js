@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { ReactNotifications } from "react-notifications-component";
 import Header from "./component/layout/Header";
 import Footer from "./component/layout/Footer";
 import MainPage from "./component/pages/MainPage"

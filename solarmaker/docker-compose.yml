@@ -12,12 +12,9 @@ services:
       context: frontend
       dockerfile: Dockerfile
     volumes:
-      - ./frontend:/frontend/
-    volumes:
       - './frontend:/app'
       - '/app/node_modules'
     
-
   backend:
     container_name: django
     build: ./app

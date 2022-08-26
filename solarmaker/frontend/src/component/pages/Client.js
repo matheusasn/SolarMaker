@@ -30,7 +30,6 @@ function handleColumnClientList(handleDelete) {
         name: "CPF/CNPJ",
         selector: (row) =>  row.cpf_cnpj,
       },
-     
       {
         name: "Ações",
         elector: (row) => row.actions,
@@ -58,73 +57,73 @@ function handleColumnClientList(handleDelete) {
 }
 
 function Client() {
-    var [client, setClient] = useState({ data: [], count: 0 });
-    var [options, setOptions] = useState({ skip: 0, limit: 10 });
+  var [client, setClient] = useState({ data: [], count: 0 });
+  var [options, setOptions] = useState({ skip: 0, limit: 10 });
 
-    useEffect(() => {
+  useEffect(() => {
+    api.getClients().then((res) => {
+      setClient({ data: res, count: res.len });
+    });
+  }, [options]);
+
+
+  const handleDelete = (id) => {
+    api.deleteClients(id).then(() => {
       api.getClients().then((res) => {
         setClient({ data: res, count: res.len });
       });
-    }, [options]);
+      toast.success("Cliente deletado com Sucesso")
+    }).catch((e) => {
+      toast.error(`Erro ao deletar cliente`);
+    })
+  };
 
-
-    const handleDelete = (id) => {
-      api.deleteClients(id).then((res) => {
-        api.getClients().then((res) => {
-          setClient({ data: res, count: res.len });
-        });
-        toast.success("Cliente deletado com Sucesso")
-      }).catch((e) => {
-        toast.error(`Erro ao deletar cliente`);
-      })
-    };
-
-    return (
-        <>
-            <BottomHeader>
-                <Navbar.Brand href="#home">
-                    <Row>
-                        <Col>
-                            <Link className="text-decoration-none" to="/">
-                                <ArrowBackIcon className="text-light" />
-                                <span className="text-light">Clientes</span>
-                            </Link>
-                        </Col>
-                    </Row>
-                </Navbar.Brand>
+  return (
+      <>
+        <BottomHeader>
+            <Navbar.Brand href="#home">
                 <Row>
-                  <Col sm="auto">
-                    <Form>
-                        <Form.Group controlId="formBasicSearch">
-                            <Form.Control className="search-style" type="text" placeholder="Pesquisar" />
-                        </Form.Group>
-                    </Form>
-                  </Col>
+                    <Col>
+                        <Link className="text-decoration-none" to="/">
+                            <ArrowBackIcon className="text-light" />
+                            <span className="text-light">Clientes</span>
+                        </Link>
+                    </Col>
                 </Row>
-            </BottomHeader>
-            <Container>
-              <div className="container-add">
-                <Link to={"/NewProject"}>
-                  <Button className="add-button">
-                    <div className="d-flex div-button">
-                      <span>Cliente</span>
-                      <AddIcon />
-                    </div>
-                  </Button>
-                </Link>
-              </div>
-              <div className="mt-3">
-                  <TableCustom
-                      data={client.data}
-                      columns={handleColumnClientList(handleDelete)}
-                      onPaginationChanged={(skip, limit) => {
-                      setOptions({ skip, limit });
-                      }}
-                      total={client.count}
-                  />
-              </div>
-            </Container>
-        </>
+            </Navbar.Brand>
+            <Row>
+              <Col sm="auto">
+                <Form>
+                    <Form.Group controlId="formBasicSearch">
+                        <Form.Control className="search-style" type="text" placeholder="Pesquisar" />
+                    </Form.Group>
+                </Form>
+              </Col>
+            </Row>
+        </BottomHeader>
+        <Container>
+          <div className="container-add">
+            <Link to={"/NewProject"}>
+              <Button className="add-button">
+                <div className="d-flex div-button">
+                  <span>Cliente</span>
+                  <AddIcon />
+                </div>
+              </Button>
+            </Link>
+          </div>
+          <div className="mt-3">
+              <TableCustom
+                  data={client.data}
+                  columns={handleColumnClientList(handleDelete)}
+                  onPaginationChanged={(skip, limit) => {
+                  setOptions({ skip, limit });
+                  }}
+                  total={client.count}
+              />
+          </div>
+        </Container>
+      </>
     )
 }
 

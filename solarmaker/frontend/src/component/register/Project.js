@@ -9,14 +9,12 @@ import api from "../../service/api"
 import "./project.css"
 
 function Project(){
-
     const [clients, setClients] = useState({
         name: "",
         email: "",
         phone_number: "",
         adress: "",
         cpf_cnpj: "",
-       
     })
 
     const [project, setProject] = useState({
@@ -53,7 +51,6 @@ function Project(){
     }
 
     const handleSendNewClients = () => {
-
         api
         .sendClients(clients)
         .then((res) => {
@@ -160,7 +157,6 @@ function Project(){
             </Tabs>
         );
     }
-
 
     return(
         <>

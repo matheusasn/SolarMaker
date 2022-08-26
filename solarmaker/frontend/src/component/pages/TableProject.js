@@ -140,43 +140,43 @@ function Project() {
 }
 function TableProjectDashboard(){
   var [project, setProject] = useState({ data: [], count: 0 });
-    var [options, setOptions] = useState({ skip: 0, limit: 10 });
+  var [options, setOptions] = useState({ skip: 0, limit: 10 });
 
-    useEffect(() => {
-      api.getProjects().then((res) => {
-        setProject({ data: res, count: res.len });
-      });
-    }, [options]);
+  useEffect(() => {
+    api.getProjects().then((res) => {
+      setProject({ data: res, count: res.len });
+    });
+  }, [options]);
 
-    const handleDelete = (id) => {
-    };
+  const handleDelete = (id) => {
+  };
 
-    return (
-        <>
-            <Container>
-              <div className="container-add">
-                <Link to={"/NewProject"}>
-                  <Button className="add-button">
-                    <div className="d-flex div-button">
-                      <span>Projeto</span>
-                      <AddIcon />
-                    </div>
-                  </Button>
-                </Link>
-              </div>
-              <div className="mt-3">
-                  <TableCustom
-                      data={project.data}
-                      columns={handleColumnProjectList(handleDelete)}
-                      onPaginationChanged={(skip, limit) => {
-                      setOptions({ skip, limit });
-                      }}
-                      total={project.count}
-                  />
-              </div>
-            </Container>
-        </>
-    )
+  return (
+      <>
+          <Container>
+            <div className="container-add">
+              <Link to={"/NewProject"}>
+                <Button className="add-button">
+                  <div className="d-flex div-button">
+                    <span>Projeto</span>
+                    <AddIcon />
+                  </div>
+                </Button>
+              </Link>
+            </div>
+            <div className="mt-3">
+                <TableCustom
+                    data={project.data}
+                    columns={handleColumnProjectList(handleDelete)}
+                    onPaginationChanged={(skip, limit) => {
+                    setOptions({ skip, limit });
+                    }}
+                    total={project.count}
+                />
+            </div>
+          </Container>
+      </>
+  )
 }
 
 export default Project
