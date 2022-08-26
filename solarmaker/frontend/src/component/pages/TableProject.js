@@ -15,10 +15,6 @@ import "./tableProject.css"
 function handleColumnProjectList(handleDelete) {
     const columns = [
       {
-        name: "Nome",
-        selector: (row) => row.client
-      },
-      {
         name: "Projeto",
         selector: (row) => row.project_name
       },
@@ -29,6 +25,10 @@ function handleColumnProjectList(handleDelete) {
       {
         name: "Responsável",
         selector: (row) => row.responsible
+      },
+      {
+        name: "CPF/CNPJ",
+        selector: (row) => row.client
       },
       {
         name: "Status",

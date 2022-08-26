@@ -63,6 +63,12 @@ function Project(){
 
     const handleSendNewProject = () => {
         api.sendProjects(project)
+        .then((res) => {
+            notifications.addSuccessNotification("Projeto cadastrado com sucesso");
+        })
+          .catch((e) => {
+            notifications.addErrorNotification("Error: ", "Não foi possível cadastrar projeto");
+         });
     }
     
     const FormNewProject = () => {
@@ -132,19 +138,27 @@ function Project(){
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="status">
                                 <Form.Label className="style-title">Status</Form.Label>
-                                <Form.Control type="text" placeholder="Status" />
+                                <Form.Label className="style-title">
+                                    <Form.Select type="text" placeholder="bug">
+                                        <option>Selecione uma opção</option>
+                                        <option value="Em andamento">Em andamento</option>
+                                        <option value="Aprovado">Aprovado</option>
+                                        <option value="Vistoria">Solicidato vistoria</option>
+                                        <option value="Concluído">Concluído</option>
+                                    </Form.Select>
+                                    </Form.Label>
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="modules">
                                 <Form.Label className="style-title">Modules</Form.Label>
-                                <Form.Control type="text" placeholder="bug" />
+                                <Form.Control type="text" placeholder="" />
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="inverter">
                                 <Form.Label className="style-title">Inverter</Form.Label>
-                                <Form.Control type="text" placeholder="bug" />
+                                <Form.Control type="text" placeholder="" />
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="budget">
-                                <Form.Label className="style-title">Bugget</Form.Label>
-                                <Form.Control type="text" placeholder="bug" />
+                                <Form.Label className="style-title">Valor</Form.Label>
+                                <Form.Control type="text" placeholder="valor" />
                             </Form.Group>
                         </Form>
                         <div className="d-flex justify-content-end">
