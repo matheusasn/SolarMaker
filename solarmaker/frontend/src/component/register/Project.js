@@ -3,8 +3,9 @@ import {Navbar, Row, Col, Tabs, Tab, Container, Form, Button} from "react-bootst
 import { Link } from "react-router-dom";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import BottomHeader from "../layout/BottomHeader";
-import api from "../../service/api"
 import notifications from "../../util/notifications";
+import { toast } from 'react-toastify';
+import api from "../../service/api"
 import "./project.css"
 
 function Project(){
@@ -56,10 +57,10 @@ function Project(){
         api
         .sendClients(clients)
         .then((res) => {
-          notifications.addSuccessNotification("Cliente cadastrado com sucesso");
+            toast.success("Cliente cadastrado com sucesso")
         })
         .catch((e) => {
-          notifications.addErrorNotification("Error: ", "Não foi possível cadastrar Cliente");
+            toast.error(`Erro ao cadastrar cliente`);
         });
     }
 

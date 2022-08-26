@@ -4,7 +4,6 @@ const acess_token = JSON.parse(localStorage.getItem("token"))
 
 class Api {
     constructor() {
-        console.log("aqui!!!!", acess_token?.token)
         this.axios = axios.create({
             baseURL: "http://localhost:8000/api/v1/",
             timeout: 30000,
@@ -19,8 +18,7 @@ class Api {
             },
             async (error) => {
                 if (error.response.status === 401 && acess_token.token) {
-                    // this.refreshToken();
-                    console.log(error.response.status)
+                    this.refreshToken();
                 }
                 return Promise.reject(error);
             }
@@ -34,6 +32,11 @@ class Api {
 
     async getClients(json) {
         let response = await this.axios.get("/clientes/", json);
+        return response.data
+    }
+
+    async deleteClients(id) {
+        let response = await this.axios.delete(`/clientes/${id}/`);
         return response.data
     }
     

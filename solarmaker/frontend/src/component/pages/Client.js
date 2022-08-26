@@ -7,6 +7,7 @@ import TableCustom from "../table/TableCustom"
 import EditIcon from "@mui/icons-material/Edit";
 import AddIcon from "@mui/icons-material/Add";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { toast } from 'react-toastify';
 import api from "../../service/api"
 
 import "./client.css"
@@ -43,7 +44,7 @@ function handleColumnClientList(handleDelete) {
               <EditIcon className="me-3" type="button" style={{color: "#ff7a00"}}/>
             </Link>
             
-            <DeleteIcon onClick={handleDelete} />
+            <DeleteIcon onClick={() => {handleDelete(row.cpf_cnpj)}} /> 
           </div>
         ),
         maxWidth: "130px",
@@ -65,7 +66,17 @@ function Client() {
         setClient({ data: res, count: res.len });
       });
     }, [options]);
+
+
     const handleDelete = (id) => {
+      api.deleteClients(id).then((res) => {
+        api.getClients().then((res) => {
+          setClient({ data: res, count: res.len });
+        });
+        toast.success("Cliente deletado com Sucesso")
+      }).catch((e) => {
+        toast.error(`Erro ao deletar cliente`);
+      })
     };
 
     return (

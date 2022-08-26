@@ -1,7 +1,5 @@
-import "react-bootstrap/dist/react-bootstrap.min.js";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { ReactNotifications } from "react-notifications-component";
-import "react-notifications-component/dist/theme.css";
 import Header from "./component/layout/Header";
 import Footer from "./component/layout/Footer";
 import MainPage from "./component/pages/MainPage"
@@ -12,6 +10,10 @@ import useToken from "./useToken";
 import User from "./component/register/User";
 import Users from "./component/pages/users";
 import TableProject from "./component/pages/TableProject";
+import { ToastContainer } from 'react-toastify';
+import "react-bootstrap/dist/react-bootstrap.min.js";
+import 'react-toastify/dist/ReactToastify.css';
+import "react-notifications-component/dist/theme.css";
 import "./App.css"
 
 function App() {
@@ -24,7 +26,7 @@ function App() {
     <div className="App">
       <Router>
         <Header></Header>
-        <ReactNotifications />
+        <ToastContainer/>
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="/NewProject" element={<Project />} />

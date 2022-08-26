@@ -12,10 +12,10 @@ COPY package.json /app/package.json
 RUN mkdir -p /app/node_modules
 RUN chown node:node /app/node_modules
 
-RUN npm install --silent
+RUN npm install
 
 RUN mkdir node_modules/.cache && chmod -R 777 node_modules/.cache
 
-RUN npm install react-scripts@5.0.1 -g --silent
+RUN npm install react-scripts@5.0.1 -g
 # Inicializa a aplicação
 CMD ["npm", "start"]

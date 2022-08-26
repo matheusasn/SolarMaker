@@ -29,7 +29,7 @@ Uses gunicorn + nginx.
     ```sh
     docker container ls
 
-    docker exec -it 0e2ddd5aaa2a python manage.py createsuperuser --email admin@admin.com --username admin
+    docker-compose exec backend python manage.py createsuperuser --email admin@admin.com --username admin
     ```
     
     1.1. Get the following error?

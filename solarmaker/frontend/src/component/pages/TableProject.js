@@ -6,11 +6,11 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import TableCustom from "../table/TableCustom"
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { toast } from 'react-toastify';
 import api from "../../service/api"
 import AddIcon from "@mui/icons-material/Add";
 
 import "./tableProject.css"
-import notifications from "../../util/notifications";
 
 function handleColumnProjectList(handleDelete) {
     const columns = [
@@ -81,15 +81,13 @@ function Project() {
     const handleDelete = (event) => {
       let id = event.target.id
        api.deleteProjects(id).then((res) => {
-        console.log(res)
-        notifications.addSuccessNotification("Deletado com sucesso")
+        toast.success("Deletado com sucesso");
         api.getProjects().then((res) => {
           setProject({ data: res, count: res.len });
         });
       }).catch((e) => {
-        notifications.addErrorNotification("Erro", e)
+        toast.error(`Error ao deletar projeto`);
       }) 
-      console.log("Elemtne", event.target.id)
     };
 
     return (
