@@ -21,6 +21,8 @@ class UserManagerViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.UserManagerSerializer
     queryset = serializers.UserManagerSerializer.Meta.model.objects.all()
     permission_classes = [IsAdminUser]
+    filter_backends = [filters.SearchFilter]
+    search_fields = ['username', 'email']
 
 class ClientViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.ClientSerializer
