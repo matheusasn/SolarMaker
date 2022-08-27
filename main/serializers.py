@@ -1,7 +1,6 @@
-from enum import unique
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from .models import Project, Client, ClientDocument, ProjectDocument
+from .models import Project, Client, ClientDocument, ProjectDocument, Finance
 from django.contrib.auth.hashers import make_password
 from rest_framework.validators import UniqueValidator
 
@@ -41,3 +40,8 @@ class ProjectDocumentSerializer(serializers.ModelSerializer):
         fields = ['project_name', 'generating_account', 'beneficiary_account', 
                   'documents']
 
+class FinanceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Finance
+        fields = ['id', 'profit', 'expenses', 
+                  'description']

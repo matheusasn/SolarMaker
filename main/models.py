@@ -85,3 +85,15 @@ class ProjectDocument(models.Model):
 
     def __str__(self):
         return str(self.project_name)
+
+
+class Finance(models.Model):
+
+    profit = models.FloatField(max_length=100,  default = 0.0, verbose_name= 'Valor de entrada')
+
+    expenses = models.FloatField(max_length=100,  default = 0.0, verbose_name= 'Valor de saída')
+
+    description = models.CharField(max_length=255, default="", verbose_name= 'Descrição')
+
+    def __str__():
+        return str("Finanças")
