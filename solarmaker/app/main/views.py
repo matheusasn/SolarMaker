@@ -6,6 +6,11 @@ from . import models, serializers
 from django.db.models import Sum
 from django.http import JsonResponse
 
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework import filters
+
+
+
 class Teste(APIView):
     def get(self, request, format=None):
         return Response({
@@ -21,6 +26,9 @@ class ClientViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.ClientSerializer
     queryset = models.Client.objects.all()
     permission_classes = (IsAuthenticated,)
+    filter_backends = [filters.SearchFilter]
+    search_fields = ['name', 'cpf_cnpj','adress','phone_number','email']
+
 
 class ClientDocumentsViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.ClientDocumentSerializer
@@ -31,6 +39,8 @@ class ProjectViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.ProjectSerializer
     queryset = models.Project.objects.all()
     permission_classes = (IsAuthenticated,)
+    filter_backends = [filters.SearchFilter]
+    search_fields = ['project_name', 'description','responsible','vendor','status']
 
 class ProjectDocumentsViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.ProjectDocumentSerializer
