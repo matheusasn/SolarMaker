@@ -3,7 +3,8 @@ from rest_framework.response import Response
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from . import models, serializers
-
+from django.db.models import Sum
+from django.http import JsonResponse
 
 class Teste(APIView):
     def get(self, request, format=None):
@@ -36,3 +37,15 @@ class ProjectDocumentsViewSet(viewsets.ModelViewSet):
     queryset = models.ProjectDocument.objects.all()
     permission_classes = (IsAuthenticated,)
 
+class FinanceViewSet(viewsets.ModelViewSet):
+    serializer_class = serializers.FinanceSerializer   
+    queryset = models.Finance.objects.all()
+    permission_classes = (IsAuthenticated,)
+
+def get_finance(request):
+    finance = models.Finance.objects.all()
+    sum_profit = finance.aggregate(Sum('profit')).get('profit__sum') or 0.0
+    sum_expenses = finance.aggregate(Sum('expenses')).get('expenses__sum') or 0.0
+    total = sum_profit - sum_expenses
+    output = {"Entrada": sum_profit, "Saida": sum_expenses, "Total": total}
+    return JsonResponse(output)
