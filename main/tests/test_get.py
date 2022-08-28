@@ -45,7 +45,7 @@ class TestGetProjectsTokenIvalido:
 
 class TestGetClients:
   
-    headers ={'Authorization': 'Token 658a0fa9b5e469a22792558a413e8f9705b7a414'} 
+    headers ={'Authorization': 'Token 7788d06479c048fd17dbacc1d2d6e46628650621'} 
 
     url_base_clients = 'http://localhost:8000/api/v1/clientes/'
 
@@ -57,7 +57,7 @@ class TestGetClients:
 
 class TestGetProjets:
 
-    headers ={'Authorization': 'Token 658a0fa9b5e469a22792558a413e8f9705b7a414'} 
+    headers ={'Authorization': 'Token 7788d06479c048fd17dbacc1d2d6e46628650621'} 
 
     url_base_projects = 'http://localhost:8000/api/v1/projetos/'
 
