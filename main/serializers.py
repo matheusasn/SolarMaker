@@ -10,7 +10,7 @@ class UserManagerSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         model.is_staff = True
-        fields = ['id', 'username', 'email', 'password', 'is_superuser']
+        fields = ['id', 'username', 'email', 'password', 'is_staff']
     
     def create(self, validated_data):
         validated_data['password'] = make_password(validated_data.get('password'))
