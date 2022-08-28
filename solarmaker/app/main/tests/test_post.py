@@ -20,7 +20,6 @@ class TestPostClient:
         resultado = requests.post(url=self.url_base_clients, headers = self.headers, data=self.new_client_nulo)
         assert resultado.json()['name'] == ['Este campo não pode ser em branco.']
         assert resultado.json()['email'] == ['Este campo não pode ser em branco.']
-        #assert resultado.json()['adress'] == ['Este campo não pode ser em branco.']
         assert resultado.json()['cpf_cnpj'] == ['Este campo não pode ser em branco.']
         assert resultado.status_code == 400
 
@@ -136,13 +135,7 @@ class TestPostProject:
 
     def test_post_project_nulo(self):
         resultado = requests.post(url=self.url_base_projects, headers = self.headers, data=self.new_project_nulo )
-        #assert resultado.json()['project_name'] == ['Este campo não pode ser em branco.']
         assert resultado.json()['client'] == ['Este campo não pode ser nulo.']
-        #assert resultado.json()['description'] == ['Este campo não pode ser em branco.']
-        #assert resultado.json()['responsible'] == ['Este campo não pode ser em branco.']
-        #assert resultado.json()['vendor'] == ['Este campo não pode ser em branco.']
-        #assert resultado.json()['potency'] == ['Este campo não pode ser nulo.']
-        #assert resultado.json()['inverter'] == ['Este campo não pode ser em branco.']
         assert resultado.json()['status'] == ['\"\" não é um escolha válido.']
         assert resultado.json()['budget'] == ['Um número válido é necessário.']
         assert resultado.status_code == 400
