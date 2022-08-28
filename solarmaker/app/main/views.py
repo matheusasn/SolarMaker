@@ -61,3 +61,8 @@ def get_finance(request):
     total = sum_profit - sum_expenses
     output = {"Entrada": sum_profit, "Saida": sum_expenses, "Total": total}
     return JsonResponse(output)
+
+def get_user(request):
+    serializer = serializers.UserManagerSerializer(request.user)
+    return JsonResponse(serializer.data)
+
