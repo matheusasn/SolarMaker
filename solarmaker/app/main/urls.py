@@ -24,5 +24,6 @@ urlpatterns = [
     path(
         "api/v1/api-token-auth/", obtain_auth_token, name="api_token_auth"
     ),
-    path('api/v1/home', views.get_finance)
+    path('api/v1/home', views.get_finance),
+    path('api/v1/usuarios/atual', views.get_user)
 ]
