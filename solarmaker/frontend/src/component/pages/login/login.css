@@ -16,7 +16,7 @@
   z-index: -1;
   width: 100%;
   height: 100%;
-  background-image: url(../../img/sty.svg);
+  background-image: url(../../../img/sty.svg);
   background-repeat: repeat-x;
   background-position-y: center;
 }

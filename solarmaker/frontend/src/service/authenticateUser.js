@@ -11,7 +11,6 @@ class Auth {
 
     async authenticateUser(username, password) {
         if (username && password) {
-            console.log(username, password)
             let response = await this.axios.post(`/api-token-auth/`, { username, password });
             return response.data;
         } else {

@@ -1,21 +1,14 @@
 import React, {useState} from "react";
 import {Navbar, Row, Col, Tabs, Tab, Container, Form, Button} from "react-bootstrap"
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import BottomHeader from "../layout/BottomHeader";
-import notifications from "../../util/notifications";
+import BottomHeader from "../../layout/BottomHeader";
 import { toast } from 'react-toastify';
-import api from "../../service/api"
+import api from "../../../service/api"
 import "./project.css"
 
 function Project(){
-    const [clients, setClients] = useState({
-        name: "",
-        email: "",
-        phone_number: "",
-        adress: "",
-        cpf_cnpj: "",
-    })
+    const navigate = useNavigate();
 
     const [project, setProject] = useState({
         project_name: "",
@@ -30,16 +23,6 @@ function Project(){
         budget: ""
     })
 
-    const handleClients = (e) => {
-        let id = e.target.id
-        let value = e.target.value
-
-        setClients( prevState => ({
-            ...prevState,
-            [id]: value
-        }))
-    }
-
     const handleProjects = (e) => {
         let id = e.target.id
         let value = e.target.value
@@ -50,65 +33,34 @@ function Project(){
         }))
     }
 
-    const handleSendNewClients = () => {
-        api
-        .sendClients(clients)
-        .then((res) => {
-            toast.success("Cliente cadastrado com sucesso!")
-        })
-        .catch((e) => {
-            toast.error(`Erro ao cadastrar cliente!`);
-        });
-    }
-
     const handleSendNewProject = () => {
-        api.sendProjects(project)
-        .then((res) => {
-            notifications.addSuccessNotification("Projeto cadastrado com sucesso");
-        })
-          .catch((e) => {
-            notifications.addErrorNotification("Error: ", "Não foi possível cadastrar projeto");
-         });
+        if(project.client === "" || project.client.length > 14 || project.client.length < 11 ){
+            toast.warning(`CPF/CNPJ Invalido`);
+        }else {
+            api.getClient(project.client)
+            .then((res) => {
+                api.sendProjects(project)
+                .then((res) => {
+                    toast.success("Projeto cadastrado com sucesso");
+                    navigate("/Projects");
+                })
+                .catch((e) => {
+                    toast.error("Error: Não foi possível cadastrar projeto");
+                });
+            })
+            .catch((e) => {
+                toast.warning(`Cliente não está cadastrado`);
+            });
+        }
     }
     
     const FormNewProject = () => {
         return (
             <Tabs
-                defaultActiveKey="client"
+                defaultActiveKey="Project"
                 id="newProject"
                 className="mb-3"
                 >
-                <Tab eventKey="client" title="Cliente">
-                    <Container>
-                        <Form onChange={(e) => handleClients(e)}>
-                            <Form.Group className="mb-3" controlId="name" required>
-                                <Form.Label className="style-title">Nome do cliente</Form.Label>
-                                <Form.Control type="text" placeholder="Cliente" />
-                            </Form.Group>
-                            <Form.Group className="mb-3" controlId="email" required>
-                                <Form.Label className="style-title">Email do cliente</Form.Label>
-                                <Form.Control type="email" placeholder="Email" />
-                            </Form.Group>
-                            <Form.Group className="mb-3" controlId="phone_number" required>
-                                <Form.Label className="style-title">Telefone</Form.Label>
-                                <Form.Control type="text" placeholder="Telefone" />
-                            </Form.Group>
-                            <Form.Group className="mb-3" controlId="adress" required>
-                                <Form.Label className="style-title">Endereço</Form.Label>
-                                <Form.Control type="text" placeholder="Endereço"/>
-                            </Form.Group>
-                            <Form.Group className="mb-3" controlId="cpf_cnpj" required>
-                                <Form.Label className="style-title">CPF/CNPJ</Form.Label>
-                                <Form.Control type="number" placeholder="CPF/CNPJ" />
-                            </Form.Group>
-                        </Form>
-                    </Container>
-                    <div className="d-flex justify-content-end">
-                        <Button onClick={handleSendNewClients} className="save-button-form">
-                            Cadastrar
-                        </Button>
-                    </div>
-                </Tab>
                 <Tab eventKey="Project" title="Projeto">
                     <Container>
                         <Form onChange={(e) => handleProjects(e)}>
@@ -125,8 +77,9 @@ function Project(){
                                 <Form.Control type="text" placeholder="Responsável" />
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="client">
-                                <Form.Label className="style-title">CPF/CNPJ</Form.Label>
-                                <Form.Control type="text" placeholder="CPF/CNPJ" />
+                                <Form.Label className="style-title">CPF/CNPJ do Cliente</Form.Label>
+                                <Form.Control type="number" placeholder="CPF/CNPJ" isInvalid={project.client.length > 14}/>
+                                <Form.Control.Feedback type="invalid">CNPJ invalido</Form.Control.Feedback>
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="vendor">
                                 <Form.Label className="style-title">Vendedor</Form.Label>
@@ -134,7 +87,7 @@ function Project(){
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="potency">
                                 <Form.Label className="style-title">Potencia</Form.Label>
-                                <Form.Control type="text" placeholder="Potencia" />
+                                <Form.Control type="number" placeholder="Potencia" />
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="status">
                                 <Form.Label className="style-title">Status</Form.Label>
@@ -153,15 +106,15 @@ function Project(){
                                 <Form.Control type="text" placeholder="" />
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="inverter">
-                                <Form.Label className="style-title">Inverter</Form.Label>
+                                <Form.Label className="style-title">Inversor</Form.Label>
                                 <Form.Control type="text" placeholder="" />
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="budget">
                                 <Form.Label className="style-title">Valor</Form.Label>
-                                <Form.Control type="text" placeholder="valor" />
+                                <Form.Control type="number" placeholder="valor" />
                             </Form.Group>
                         </Form>
-                        <div className="d-flex justify-content-end">
+                        <div className="d-flex justify-content-end pb-4">
                             <Button onClick={handleSendNewProject} className="save-button-form">
                                 Cadastrar
                             </Button>
@@ -178,9 +131,9 @@ function Project(){
                 <Navbar.Brand>
                     <Row>
                         <Col>
-                            <Link className="text-decoration-none" to="/">
+                            <Link className="text-decoration-none" to="/Projects">
                             <ArrowBackIcon className="text-light" />
-                                <span className="text-light">Novo Projeto</span>
+                                <span className="text-light">Cadastrar Projeto</span>
                             </Link>
                         </Col>
                     </Row>

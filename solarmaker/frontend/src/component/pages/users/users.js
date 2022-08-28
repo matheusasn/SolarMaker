@@ -1,25 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Navbar, Row, Col, Form, Button, Container } from "react-bootstrap"
-import BottomHeader from "../layout/BottomHeader";
+import BottomHeader from "../../layout/BottomHeader";
 import { Link } from "react-router-dom";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import TableCustom from "../table/TableCustom";
+import TableCustom from "../../table/TableCustom";
 import EditIcon from "@mui/icons-material/Edit";
 import AddIcon from "@mui/icons-material/Add";
-// import api from "../../service/api"
+import DeleteIcon from "@mui/icons-material/Delete";
+import { toast } from 'react-toastify';
+import api from "../../../service/api"
 import "./users.css"
 
 function handleColumnUserList(handleDelete) {
     const columns = [
       {
-        name: "name",
-        selector: (row) => {
-          if (navigator.language === "pt-BR") {
-            return row.name_pt;
-          } else {
-            return row.name_en;
-          }
-        },
+        name: "Nome",
+        selector: (row) => row.username,
+      },
+      {
+        name: "Email",
+        selector: (row) => row.email,
+      },
+      {
+        name: "Especialidade",
+        selector: (row) => row.is_superuser ? "Administrador" : "Vendedor",
       },
       {
         name: "Ações",
@@ -28,19 +32,12 @@ function handleColumnUserList(handleDelete) {
           <div className="d-flex actionsIcons">
             <Link
               className="editIcon"
-              to="/"
-              state={{ id: row._id }}
+              to="/FormUser/edit"
+              state={{ id: row.id }}
             >
-              <EditIcon className="me-3" type="button" />
+              <EditIcon className="me-3" style={{color: "#ff7a00"}} />
             </Link>
-            <Button
-            //   id={row._id}
-            //   handleDelete={handleDelete}
-            //   title={t("deleteHealthInsurance")}
-            //   description={t("deleteHealthInsuranceMsg", {
-            //     name: navigator.language === "pt-BR" ? row.name_pt : row.name_en,
-            //   })}
-            />
+            <DeleteIcon  onClick={() => {handleDelete(row.id)}} /> 
           </div>
         ),
         maxWidth: "130px",
@@ -56,8 +53,21 @@ function handleColumnUserList(handleDelete) {
 function User() {
     var [user, setUser] = useState({ data: [], count: 0 });
     var [options, setOptions] = useState({ skip: 0, limit: 10 });
-
+    
+    useEffect(() => {
+      api.getUsers().then((res) => {
+        setUser({ data: res, count: res.len });
+      });
+    }, [options]);
     const handleDelete = (id) => {
+       api.deleteUser(id).then((res) => {
+        toast.success("Deletado com sucesso");
+        api.getUsers().then((res) => {
+          setUser({ data: res, count: res.len });
+        });
+      }).catch((e) => {
+        toast.error(`Error ao deletar Usuário`);
+      }) 
     };
 
     return (
@@ -85,7 +95,7 @@ function User() {
             </BottomHeader>
             <Container>
               <div className="container-add">
-                  <Link to={"/NewUser"}>
+                  <Link to={"/FormUser"}>
                     <Button className="add-button">
                       <div className="d-flex div-button">
                         <span>Usuário</span>

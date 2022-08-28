@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Form, Row, Col, Container, Card } from "react-bootstrap";
 import PropTypes from "prop-types";
-import auth from "../../service/authenticateUser"
+import auth from "../../../service/authenticateUser"
 import "./login.css";
 
 async function loginUser(username, password) {

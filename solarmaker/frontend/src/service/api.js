@@ -25,6 +25,12 @@ class Api {
         )
     }
 
+    /**
+     * 
+     * Clients
+     * 
+    */
+
     async sendClients(json) {
         let response = await this.axios.post("/clientes/", json);
         return response.data
@@ -35,31 +41,65 @@ class Api {
         return response.data
     }
 
+    async getClient(id) {
+        let response = await this.axios.get(`/clientes/${id}/`);
+        return response.data
+    }
+
     async deleteClients(id) {
         let response = await this.axios.delete(`/clientes/${id}/`);
         return response.data
     }
     
+    /**
+     * 
+     * Projects
+     * 
+    */
     
     async sendProjects(json) {
         let response = await this.axios.post("/projetos/", json);
-
         return response.data
     }
 
-    async getProjects(json) {
-        let response = await this.axios.get("/projetos/", json);
+    async getProjects() {
+        let response = await this.axios.get("/projetos/");
         return response.data
     }
 
     async deleteProjects(id) {
-        console.log(id)
         let response = await this.axios.delete(`/projetos/${id}/`);
         return response.data
     }
 
+    /**
+     * 
+     * Users
+     * 
+    */
+
     async sendUsers(json) {
-        let response = await this.axios.post("/users/", json);
+        let response = await this.axios.post("/vendedores/", json);
+        return response.data
+    }
+
+    async getUsers() {
+        let response = await this.axios.get("/vendedores/");
+        return response.data
+    }
+
+    async getUser(id) {
+        let response = await this.axios.get(`/vendedores/${id}/`);
+        return response.data
+    }
+
+    async updateUser(id) {
+        let response = await this.axios.put(`/vendedores/${id}/`);
+        return response.data
+    }
+
+    async deleteUser(id) {
+        let response = await this.axios.delete(`/vendedores/${id}/`);
         return response.data
     }
     

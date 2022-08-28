@@ -16,13 +16,12 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import api from "../../service/api"
 import "./header.css";
 
-function ProfileButton() {
+function ProfileButton(props) {
+  console.log(props)
   const [show, setShow] = useState(false);
-  const [target, setTarget] = useState(null);
 
   const handleClick = () => {
     setShow(!show);
-    setTarget(document.getElementById("profileButton"));
   };
 
   const handleShowPopover = () => {
@@ -45,14 +44,16 @@ function ProfileButton() {
                 Dashboard
             </Link>
         </Col>
-        <Col className="m-3 ms-0 mx-4">
-            <Link to="/Client" onClick={handleShowPopover} className="style-options style-text-color">
-              Gerenciar Clientes
-            </Link>
-        </Col>
-        <Col className="m-3 ms-0 mx-4">
+        {props.typeUser === true ? 
+          <Col className="m-3 ms-0 mx-4">
             <Link to="/Users" onClick={handleShowPopover} className="style-options style-text-color">
               Gerenciar Usuários
+            </Link>
+          </Col>
+        :null }
+        <Col className="m-3 ms-0 mx-4">
+            <Link to="/Clients" onClick={handleShowPopover} className="style-options style-text-color">
+              Gerenciar Clientes
             </Link>
         </Col>
         <Col className="m-3 ms-0 mx-4">
@@ -64,9 +65,9 @@ function ProfileButton() {
           <Row>
             <Col sm="auto px-0 ps-3">
               <LogoutIcon style={{ color: "#DB1F1F" }} />{" "}
-                <a href="" className="text-danger style-options" onClick={handleLogout}>
+                <span className="text-danger style-options" onClick={handleLogout}>
                     Sair
-                </a>
+                </span>
             </Col>
           </Row>
         </Col>
@@ -114,14 +115,14 @@ function ProfileButton() {
   );
 }
 
-function Header() {
+function Header(props) {
   return (
     <Navbar className="header justify-content-between">
       <Container>
         <Navbar.Brand>
           <Link to="/" className="style-dashboard"><span className="style-logo">SolarMaker</span></Link>
         </Navbar.Brand>
-        <ProfileButton></ProfileButton>
+        <ProfileButton typeUser={props.typeUser}></ProfileButton>
       </Container>
     </Navbar>
   );

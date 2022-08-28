@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Navbar, Row, Col, Form, Button, Container } from "react-bootstrap"
-import BottomHeader from "../layout/BottomHeader";
+import BottomHeader from "../../layout/BottomHeader";
 import { Link } from "react-router-dom";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import TableCustom from "../table/TableCustom"
+import TableCustom from "../../table/TableCustom"
 import EditIcon from "@mui/icons-material/Edit";
 import AddIcon from "@mui/icons-material/Add";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { toast } from 'react-toastify';
-import api from "../../service/api"
+import api from "../../../service/api"
 
 import "./client.css"
 
@@ -103,7 +103,7 @@ function Client() {
         </BottomHeader>
         <Container>
           <div className="container-add">
-            <Link to={"/NewProject"}>
+            <Link to={"/FormClient"}>
               <Button className="add-button">
                 <div className="d-flex div-button">
                   <span>Cliente</span>

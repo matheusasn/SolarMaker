@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { Navbar, Row, Col, Form, Container, Button } from "react-bootstrap"
-import BottomHeader from "../layout/BottomHeader";
+import BottomHeader from "../../layout/BottomHeader";
 import { Link } from "react-router-dom";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import TableCustom from "../table/TableCustom"
+import TableCustom from "../../table/TableCustom"
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { toast } from 'react-toastify';
-import api from "../../service/api"
+import api from "../../../service/api"
 import AddIcon from "@mui/icons-material/Add";
 
-import "./tableProject.css"
+import "./projects.css"
 
 function handleColumnProjectList(handleDelete) {
     const columns = [
@@ -53,8 +53,7 @@ function handleColumnProjectList(handleDelete) {
             >
             <EditIcon className="me-3" type="button" style={{color: "#ff7a00"}}/>
             </Link>
-            
-            <button id={row.id} onClick={handleDelete}></button>
+            <DeleteIcon onClick={() => {handleDelete(row.id)}}></DeleteIcon>
           </div>
         ),
         maxWidth: "130px",
@@ -78,9 +77,9 @@ function Project() {
       });
     }, [options]);
     
-    const handleDelete = (event) => {
-      let id = event.target.id
-       api.deleteProjects(id).then((res) => {
+    const handleDelete = (id) => {
+      console.log(id)
+      api.deleteProjects(id).then((res) => {
         toast.success("Deletado com sucesso");
         api.getProjects().then((res) => {
           setProject({ data: res, count: res.len });
@@ -115,7 +114,7 @@ function Project() {
             </BottomHeader>
             <Container>
               <div className="container-add">
-                <Link to={"/NewProject"}>
+                <Link to={"/FormProject"}>
                   <Button className="add-button">
                     <div className="d-flex div-button">
                       <span>Projeto</span>
@@ -138,7 +137,7 @@ function Project() {
         </>
     )
 }
-function TableProjectDashboard(){
+function FormProjectDashboard(){
   var [project, setProject] = useState({ data: [], count: 0 });
   var [options, setOptions] = useState({ skip: 0, limit: 10 });
 
@@ -149,13 +148,22 @@ function TableProjectDashboard(){
   }, [options]);
 
   const handleDelete = (id) => {
+    console.log(id)
+    api.deleteProjects(id).then((res) => {
+      toast.success("Deletado com sucesso");
+      api.getProjects().then((res) => {
+        setProject({ data: res, count: res.len });
+      });
+    }).catch((e) => {
+      toast.error(`Error ao deletar projeto`);
+    }) 
   };
 
   return (
       <>
           <Container>
             <div className="container-add">
-              <Link to={"/NewProject"}>
+              <Link to={"/FormProject"}>
                 <Button className="add-button">
                   <div className="d-flex div-button">
                     <span>Projeto</span>
@@ -180,4 +188,4 @@ function TableProjectDashboard(){
 }
 
 export default Project
-export {TableProjectDashboard}
+export {FormProjectDashboard}

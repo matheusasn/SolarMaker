@@ -2,13 +2,15 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Header from "./component/layout/Header";
 import Footer from "./component/layout/Footer";
 import MainPage from "./component/pages/MainPage"
-import Project from "./component/register/Project";
-import Login from "./component/pages/Login";
-import Client from "./component/pages/Client";
+import FormProject from "./component/pages/project/FormProject";
+import Login from "./component/pages/login/Login";
+import Clients from "./component/pages/client/Clients";
 import useToken from "./useToken";
-import User from "./component/register/User";
-import Users from "./component/pages/users";
-import TableProject from "./component/pages/TableProject";
+import useUsers from "./useUsers";
+import FormUser from "./component/pages/users/FormUser";
+import Users from "./component/pages/users/users";
+import Projects from "./component/pages/project/Projects";
+import FormClient from "./component/pages/client/FormClient";
 import { ToastContainer } from 'react-toastify';
 import "react-bootstrap/dist/react-bootstrap.min.js";
 import 'react-toastify/dist/ReactToastify.css';
@@ -17,6 +19,7 @@ import "./App.css"
 
 function App() {
   const { token, setToken } = useToken();
+  const { user } = useUsers();
 
   if (!token) {
     return <Login setToken={setToken} />;
@@ -24,15 +27,17 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <Header></Header>
+        <Header typeUser={user}></Header>
         <ToastContainer/>
         <Routes>
-          <Route path="/" element={<MainPage />} />
-          <Route path="/NewProject" element={<Project />} />
-          <Route path="/NewUser" element={<User />} />
-          <Route path="/Client" element={<Client />} /> 
-          <Route path="/Users" element={<Users />} />
-          <Route path="/Projects" element={<TableProject />} />          
+          <Route path="/" element={<MainPage/>} />
+          <Route path="/Projects" element={<Projects />} />          
+          <Route path="/FormProject" element={<FormProject />} />
+          <Route path="/Clients" element={<Clients />} /> 
+          <Route path="/FormClient" element={<FormClient />} />
+          <Route path={user === true ? "/Users" : null} element={user === true ? <Users /> : null} />
+          <Route path={user === true ? "/FormUser" : null} element={user === true ? <FormUser /> : null}/>
+          <Route path={user === true ? "/FormUser/edit" : null} element={user === true ? <FormUser /> : null}/>
         </Routes>
       </Router>
       <Footer></Footer>

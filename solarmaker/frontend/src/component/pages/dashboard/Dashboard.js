@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Navbar, Row, Col, Button, Container, Card, Popover, ButtonToolbar, OverlayTrigger } from "react-bootstrap";
 import DashboardIcon from "@mui/icons-material/Dashboard";
-import BottomHeader from "../layout/BottomHeader";
-import {TableProjectDashboard} from "../pages/TableProject";
+import BottomHeader from "../../layout/BottomHeader";
+import {FormProjectDashboard} from "../project/Projects";
 import EditIcon from "@mui/icons-material/Edit";
 import CheckIcon from "@mui/icons-material/Check";
 import SortIcon from "@mui/icons-material/Sort";
 import { Link } from "react-router-dom";
-import api from "../../service/api"
+import api from "../../../service/api"
 
 import "./dashboard.css"
 
@@ -44,7 +44,7 @@ function AddDashboard() {
                     <Card.Header className="title-style bg-danger">Saida</Card.Header>
                     <Card.Body>
                         <div>
-                            <h3 className="h3-color">R$ 00,00</h3>
+                            <h3 className="h3-color">R$ 0,00</h3>
                         </div>
                     </Card.Body>
                 </Card>
@@ -119,7 +119,7 @@ function FilterPeriodButton(props) {
   };
   
   const popoverBody = (
-    <Popover id="popover-contained" title="Popover bottom">
+    <Popover title="Popover bottom">
       <Popover.Body>
         <Row
           className="p-1"
@@ -137,9 +137,9 @@ function FilterPeriodButton(props) {
             />
           </Col>
           <Col sm="auto">
-            <a href="#" className="style-text-color">
+            <span className="style-text-color">
               Sem filtro
-            </a>
+            </span>
           </Col>
         </Row>
 
@@ -159,9 +159,9 @@ function FilterPeriodButton(props) {
             />
           </Col>
           <Col sm="auto">
-            <a href="#" className="style-text-color">
+            <span className="style-text-color">
               Aprovado
-            </a>
+            </span>
           </Col>
         </Row>
 
@@ -181,9 +181,9 @@ function FilterPeriodButton(props) {
             />
           </Col>
           <Col sm="auto">
-            <a href="#" className="style-text-color">
+            <span className="style-text-color">
               Em análise
-            </a>
+            </span>
           </Col>
         </Row>
 
@@ -203,9 +203,9 @@ function FilterPeriodButton(props) {
             />
           </Col>
           <Col sm="auto">
-            <a href="#" className="style-text-color">
+            <span className="style-text-color">
               Reprovado
-            </a>
+            </span>
           </Col>
         </Row> 
       </Popover.Body>
@@ -267,7 +267,7 @@ function Dashboard() {
                 </Row>
             </BottomHeader>
             {AddDashboard()}
-            {<TableProjectDashboard/>}
+            {<FormProjectDashboard/>}
         </>
     );
 }
