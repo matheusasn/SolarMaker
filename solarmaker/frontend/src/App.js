@@ -35,6 +35,7 @@ function App() {
           <Route path="/FormProject" element={<FormProject />} />
           <Route path="/Clients" element={<Clients />} /> 
           <Route path="/FormClient" element={<FormClient />} />
+          <Route path="/FormClient/edit" element={<FormClient />} />
           <Route path={user === true ? "/Users" : null} element={user === true ? <Users /> : null} />
           <Route path={user === true ? "/FormUser" : null} element={user === true ? <FormUser /> : null}/>
           <Route path={user === true ? "/FormUser/edit" : null} element={user === true ? <FormUser /> : null}/>

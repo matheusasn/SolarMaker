@@ -51,6 +51,10 @@ class Api {
         return response.data
     }
     
+    async updateClients(id,json) {
+        let response = await this.axios.put(`/clientes/${id}/`,json);
+        return response.data
+    }
     /**
      * 
      * Projects
@@ -72,6 +76,10 @@ class Api {
         return response.data
     }
 
+    async updateProjects(id,json) {
+        let response = await this.axios.put(`/projetos/${id}/`,json);
+        return response.data
+    }
     /**
      * 
      * Users
@@ -93,8 +101,8 @@ class Api {
         return response.data
     }
 
-    async updateUser(id) {
-        let response = await this.axios.put(`/vendedores/${id}/`);
+    async updateUser(id,json) {
+        let response = await this.axios.put(`/vendedores/${id}/`,json);
         return response.data
     }
 

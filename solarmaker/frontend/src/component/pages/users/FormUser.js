@@ -72,7 +72,7 @@ function User(){
                 toast.error(`Erro: ${e.request.status}, Não foi possível cadastrar usuário`);
             })
         } else {
-            api.updateUser(users).then(() => {
+            api.updateUser(id,users).then(() => {
                 toast.success("Usuário atualizado com sucesso")
                 navigate("/Users");
             }).catch((e) => {

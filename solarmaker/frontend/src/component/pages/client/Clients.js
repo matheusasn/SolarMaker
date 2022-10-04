@@ -37,8 +37,8 @@ function handleColumnClientList(handleDelete) {
           <div className="d-flex actionsIcons">
             <Link
               className="editIcon"
-              to="/"
-              state={{ id: row._id }}
+              to="/FormClient/edit"
+              state={{ id: row.id }}
             >
               <EditIcon className="me-3" type="button" style={{color: "#ff7a00"}}/>
             </Link>

@@ -1,6 +1,6 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import {Navbar, Row, Col, Tabs, Tab, Container, Form, Button} from "react-bootstrap"
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import BottomHeader from "../../layout/BottomHeader";
 import InputMask from "react-input-mask";
@@ -10,6 +10,7 @@ import "./formClient.css"
 
 function FormClient(){
     const navigate = useNavigate();
+    const location = useLocation();
 
     const [clients, setClients] = useState({
         name: "",
@@ -31,6 +32,25 @@ function FormClient(){
         }))
     }
 
+    let id = undefined;
+    if (location.state) {
+        id = location.state.id;
+    }
+
+    useEffect(() => {
+        if (typeof id === "undefined") return;
+            api.getClient(id).then((res) => {
+                let client = {
+                    name: res.name,
+                    email: res.email,
+                    phone_number: res.phone_number,
+                    adress: res.adress,
+                    cpf_cnpj: res.cpf_cnpj
+                }
+                setClients(client);
+            });
+    }, [id]);
+
     const handleSendNewClients = () => {
         if(clients.name === ""){
             toast.warning(`Nome obrigatório`);
@@ -42,7 +62,7 @@ function FormClient(){
             toast.warning(`Endereço obrigatório`);
         }else if(clients.cpf_cnpj === "" || clients.cpf_cnpj.length > 14 || clients.cpf_cnpj.length < 11 ){
             toast.warning(`CPF/CNPJ Invalido`);
-        }else {
+        }else if(typeof id === "undefined"){
             api
             .sendClients(clients)
             .then((res) => {
@@ -53,6 +73,15 @@ function FormClient(){
                 console.log(e)
                 toast.error(`Erro ao cadastrar cliente!`);
             });
+        }
+        else {
+            console.log("fdfdfd")
+            api.updateClients(id,clients).then(() => {
+                toast.success("Cliente atualizado com sucesso")
+                navigate("/Clients");
+            }).catch((e) => {
+                toast.error(`Erro: ${e.request.status}, Não foi possível atualizar cliente`);
+            })
         }
         
     }
@@ -98,7 +127,7 @@ function FormClient(){
                     </Container>
                     <div className="d-flex justify-content-end pb-4">
                         <Button onClick={handleSendNewClients} className="save-button-form">
-                            Cadastrar
+                        {typeof id === "undefined" ? "Cadastrar" : "Atualizar"}
                         </Button>
                     </div>
                 </Tab>
