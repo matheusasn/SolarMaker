@@ -33,6 +33,7 @@ function App() {
           <Route path="/" element={<MainPage/>} />
           <Route path="/Projects" element={<Projects />} />          
           <Route path="/FormProject" element={<FormProject />} />
+          <Route path="/FormProject/edit" element={<FormProject />} />
           <Route path="/Clients" element={<Clients />} /> 
           <Route path="/FormClient" element={<FormClient />} />
           <Route path="/FormClient/edit" element={<FormClient />} />

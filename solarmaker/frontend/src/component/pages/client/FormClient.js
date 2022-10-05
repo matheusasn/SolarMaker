@@ -50,7 +50,7 @@ function FormClient(){
                 setClients(client);
             });
     }, [id]);
-
+    
     const handleSendNewClients = () => {
         if(clients.name === ""){
             toast.warning(`Nome obrigatório`);
@@ -98,11 +98,11 @@ function FormClient(){
                         <Form onChange={(e) => handleClients(e)}>
                             <Form.Group className="mb-3" controlId="name" required>
                                 <Form.Label className="style-title">Nome do cliente</Form.Label>
-                                <Form.Control type="text" placeholder="Cliente" />
+                                <Form.Control type="text" placeholder="Cliente" defaultValue={clients.name}/>
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="email" required>
                                 <Form.Label className="style-title">Email do cliente</Form.Label>
-                                <Form.Control type="email" placeholder="Email" isInvalid={clients.email.indexOf(' ') >= 0}/>
+                                <Form.Control type="email" placeholder="Email" isInvalid={clients.email.indexOf(' ') >= 0} defaultValue={clients.email}/>
                                 <Form.Control.Feedback type="invalid">Email não pode possuir espaço</Form.Control.Feedback>
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="phone_number" required>
@@ -112,15 +112,17 @@ function FormClient(){
                                     mask="(99)99999-9999"
                                     className="form-control"
                                     placeholder="Telefone"
+                                    isInvalid={clients.phone_number.indexOf(' ') >= 0} 
+                                    value={clients.phone_number}
                                 />
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="adress" required>
                                 <Form.Label className="style-title">Endereço</Form.Label>
-                                <Form.Control type="text" placeholder="Endereço"/>
+                                <Form.Control type="text" placeholder="Endereço" defaultValue={clients.adress}/>
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="cpf_cnpj" required>
                                 <Form.Label className="style-title">CPF/CNPJ</Form.Label>
-                                <Form.Control type="number" placeholder="CPF/CNPJ" isInvalid={clients.cpf_cnpj.length > 14}/>
+                                <Form.Control type="number" placeholder="CPF/CNPJ" isInvalid={clients.cpf_cnpj.length > 14} defaultValue={clients.cpf_cnpj}/>
                                 <Form.Control.Feedback type="invalid">CNPJ invalido</Form.Control.Feedback>
                             </Form.Group>
                         </Form>

@@ -48,7 +48,7 @@ function handleColumnProjectList(handleDelete) {
           <div className="d-flex actionsIcons">
             <Link
               className="editIcon"
-              to="/"
+              to="/FormProject/edit"
               state={{ id: row.id }}
             >
             <EditIcon className="me-3" type="button" style={{color: "#ff7a00"}}/>

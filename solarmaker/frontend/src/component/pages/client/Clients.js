@@ -38,7 +38,7 @@ function handleColumnClientList(handleDelete) {
             <Link
               className="editIcon"
               to="/FormClient/edit"
-              state={{ id: row.id }}
+              state={{ id: row.cpf_cnpj }}
             >
               <EditIcon className="me-3" type="button" style={{color: "#ff7a00"}}/>
             </Link>
