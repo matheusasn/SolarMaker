@@ -125,6 +125,10 @@ function FormClient(){
                                 <Form.Control type="number" placeholder="CPF/CNPJ" isInvalid={clients.cpf_cnpj.length > 14} defaultValue={clients.cpf_cnpj}/>
                                 <Form.Control.Feedback type="invalid">CNPJ invalido</Form.Control.Feedback>
                             </Form.Group>
+                            <Form.Group controlId="formFile" className="mb-3">
+                            <Form.Label className="style-title">Anexo</Form.Label>
+                                <Form.Control type="file" />
+                            </Form.Group>
                         </Form>
                     </Container>
                     <div className="d-flex justify-content-end pb-4">

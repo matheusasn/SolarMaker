@@ -138,6 +138,10 @@ function Project(){
                                 <Form.Label className="style-title">Valor</Form.Label>
                                 <Form.Control type="number" placeholder="valor" defaultValue={project.budget}/>
                             </Form.Group>
+                            <Form.Group controlId="formFile" className="mb-3">
+                            <Form.Label className="style-title">Anexo</Form.Label>
+                                <Form.Control type="file" />
+                            </Form.Group>
                         </Form>
                         <div className="d-flex justify-content-end pb-4">
                             <Button onClick={handleSendNewProject} className="save-button-form">
