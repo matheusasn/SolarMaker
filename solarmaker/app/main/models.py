@@ -5,8 +5,8 @@ from django.core.validators import RegexValidator
 class Regex():
 
     phone_regex = RegexValidator(
-                  regex=r'^\([1-9]{2}\)(?:[2-8]|9[1-9])[0-9]{3}\-[0-9]{4}$', 
-                  message="Número inválido, insira um número nos formatos: (11)1111-1111, (11)11111-1111 ou sem formatação")
+                  regex=r'^(\([0-9]{2}\))\s([9]{1})?([0-9]{4})-([0-9]{4})$', 
+                  message="Número inválido, insira um número nos formatos: (11) 1234-1234 ou (11) 12345-1234")
 
     cpf_cnpj_regex = RegexValidator(
                   regex=r'([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})', 
@@ -24,21 +24,16 @@ class Client(models.Model):
 
     cpf_cnpj = models.CharField(validators=[Regex().cpf_cnpj_regex], max_length=20, primary_key = True, verbose_name= 'CPF/CNPJ')
 
+    proxy = models.FileField(upload_to = 'client_documents/%Y/%m/%d', blank = True, null=True, verbose_name= 'Procuração')
+
+    contract = models.FileField(upload_to = 'client_documents/%Y/%m/%d', blank = True, null=True, verbose_name= 'Contrato')
+
+    date = models.DateField(auto_now_add = False, null=True, blank = True, verbose_name= 'Data de recebimento dos documentos')
+
+
     def __str__(self):
         return self.name
 
-class ClientDocument(models.Model):
-
-    client_name = models.ForeignKey(Client, default = "", on_delete=models.CASCADE, verbose_name= 'Cliente')
-
-    date = models.DateField(auto_now_add=False, verbose_name= 'Data de recebimento')
-
-    proxy = models.FileField(upload_to = 'client_documents/%Y/%m/%d', verbose_name= 'Procuração')
-
-    contract = models.FileField(upload_to = 'client_documents/%Y/%m/%d', verbose_name= 'Contrato')
-
-    def __str__(self):
-        return str(self.client_name)
 
 class Project(models.Model):
 
@@ -70,22 +65,14 @@ class Project(models.Model):
 
     budget = models.FloatField(max_length=100, verbose_name= 'Orçamento')
 
+    generating_account = models.FileField(upload_to = 'project_documents/%Y/%m/%d', blank = True, null=True, verbose_name= 'Conta geradora')
+
+    beneficiary_account = models.FileField(upload_to = 'project_documents/%Y/%m/%d', blank = True, null=True, verbose_name= 'Conta beneficiária')
+
+    client_documents = models.FileField(upload_to = 'project_documents/%Y/%m/%d', blank = True, null=True, verbose_name= 'CPF, RG ou CNH')
+    
     def __str__(self):
         return self.project_name
-
-class ProjectDocument(models.Model):
-
-    project_name = models.ForeignKey(Project, on_delete=models.CASCADE, verbose_name= "Projeto")
-
-    generating_account = models.FileField(upload_to = 'project_documents/%Y/%m/%d', verbose_name= 'Conta geradora')
-
-    beneficiary_account = models.FileField(upload_to = 'project_documents/%Y/%m/%d', verbose_name= 'Conta beneficiária')
-
-    documents = models.FileField(upload_to = 'project_documents/%Y/%m/%d', verbose_name= 'CPF, RG ou CNH')
-
-    def __str__(self):
-        return str(self.project_name)
-
 
 class Finance(models.Model):
 

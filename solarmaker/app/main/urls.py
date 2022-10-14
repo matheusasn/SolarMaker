@@ -11,8 +11,6 @@ router = routers.DefaultRouter()
 
 router.register(r'clientes', views.ClientViewSet, basename="Clientes")
 router.register(r'projetos', views.ProjectViewSet, basename="Projetos")
-router.register(r'projetos/documentos', views.ProjectViewSet, basename="Documentos dos Projetos")
-router.register(r'clientes/documentos', views.ProjectViewSet, basename="Documentos dos Clientes")
 router.register(r'vendedores', views.UserManagerViewSet, basename="Vendedores")
 router.register(r'financas', views.FinanceViewSet, basename="Finanças")
 

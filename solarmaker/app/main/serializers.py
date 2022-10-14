@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from .models import Project, Client, ClientDocument, ProjectDocument, Finance
+from .models import Project, Client, Finance
 from django.contrib.auth.hashers import make_password
 from rest_framework.validators import UniqueValidator
 
@@ -18,26 +18,15 @@ class UserManagerSerializer(serializers.ModelSerializer):
 class ClientSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Client
-        fields = ['name', 'email', 'phone_number', 'adress', 'cpf_cnpj']
-
-class ClientDocumentSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = ClientDocument
-        fields = ['client_name', 'date', 
-                  'proxy', 'contract']
+        fields = ['name', 'email', 'phone_number', 'adress', 'cpf_cnpj', 'proxy', 'contract', 'date']
 
 class ProjectSerializer(serializers.ModelSerializer):
     class Meta:
         model = Project
         fields = ['id', 'project_name', 'client', 'description', 
                   'responsible', 'vendor', 'potency',
-                  'modules', 'inverter', 'status', 'budget']
-
-class ProjectDocumentSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = ProjectDocument
-        fields = ['project_name', 'generating_account', 'beneficiary_account', 
-                  'documents']
+                  'modules', 'inverter', 'status', 'budget', 'generating_account',
+                  'beneficiary_account', 'client_documents']
 
 class FinanceSerializer(serializers.ModelSerializer):
     class Meta:

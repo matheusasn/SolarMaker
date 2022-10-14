@@ -29,25 +29,15 @@ class ClientViewSet(viewsets.ModelViewSet):
     queryset = models.Client.objects.all()
     permission_classes = (IsAuthenticated,)
     filter_backends = [filters.SearchFilter]
-    search_fields = ['name', 'cpf_cnpj','adress','phone_number','email']
-
-
-class ClientDocumentsViewSet(viewsets.ModelViewSet):
-    serializer_class = serializers.ClientDocumentSerializer
-    queryset = models.ClientDocument.objects.all()
-    permission_classes = (IsAuthenticated,)
+    search_fields = ['name', 'cpf_cnpj','adress','phone_number','email', 'proxy', 'contract', 'date']
 
 class ProjectViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.ProjectSerializer
     queryset = models.Project.objects.all()
     permission_classes = (IsAuthenticated,)
     filter_backends = [filters.SearchFilter]
-    search_fields = ['project_name', 'description','responsible','vendor','status']
-
-class ProjectDocumentsViewSet(viewsets.ModelViewSet):
-    serializer_class = serializers.ProjectDocumentSerializer
-    queryset = models.ProjectDocument.objects.all()
-    permission_classes = (IsAuthenticated,)
+    search_fields = ['project_name', 'description','responsible','vendor','status', 
+                     'generating_account', 'beneficiary_account', 'client_documents']
 
 class FinanceViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.FinanceSerializer   
