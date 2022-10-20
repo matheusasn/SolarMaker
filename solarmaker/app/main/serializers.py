@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from .models import Project, Client, Finance
+from .models import Project, Client
 from django.contrib.auth.hashers import make_password
 from rest_framework.validators import UniqueValidator
 
@@ -25,11 +25,5 @@ class ProjectSerializer(serializers.ModelSerializer):
         model = Project
         fields = ['id', 'project_name', 'client', 'description', 
                   'responsible', 'vendor', 'potency',
-                  'modules', 'inverter', 'status', 'budget', 'generating_account',
+                  'modules', 'inverter', 'status', 'budget', 'amount_spent', 'generating_account',
                   'beneficiary_account', 'client_documents']
-
-class FinanceSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Finance
-        fields = ['id', 'profit', 'expenses', 
-                  'description']

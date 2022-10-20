@@ -36,20 +36,16 @@ class ProjectViewSet(viewsets.ModelViewSet):
     queryset = models.Project.objects.all()
     permission_classes = (IsAuthenticated,)
     filter_backends = [filters.SearchFilter]
-    search_fields = ['project_name', 'description','responsible','vendor','status', 
+    search_fields = ['project_name', 'client', 'description','responsible','vendor','potency', 
+                     'modules', 'inverter', 'status', 'budget', 'amount_spent',
                      'generating_account', 'beneficiary_account', 'client_documents']
 
-class FinanceViewSet(viewsets.ModelViewSet):
-    serializer_class = serializers.FinanceSerializer   
-    queryset = models.Finance.objects.all()
-    permission_classes = (IsAuthenticated,)
-
-def get_finance(request):
-    finance = models.Finance.objects.all()
-    sum_profit = finance.aggregate(Sum('profit')).get('profit__sum') or 0.0
-    sum_expenses = finance.aggregate(Sum('expenses')).get('expenses__sum') or 0.0
-    total = sum_profit - sum_expenses
-    output = {"Entrada": sum_profit, "Saida": sum_expenses, "Total": total}
+def get_project_value(request):
+    project = models.Project.objects.all()
+    sum_budget = project.aggregate(Sum('budget')).get('budget__sum') or 0.0
+    sum_amount_spent = project.aggregate(Sum('amount_spent')).get('amount_spent__sum') or 0.0
+    total = sum_budget - sum_amount_spent
+    output = {"Entrada": sum_budget, "Saida": sum_amount_spent, "Total": total}
     return JsonResponse(output)
 
 def get_user(request):

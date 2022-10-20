@@ -63,7 +63,9 @@ class Project(models.Model):
 
     status = models.CharField(max_length=50, choices=status_choices, verbose_name= 'Status')
 
-    budget = models.FloatField(max_length=100, verbose_name= 'Orçamento')
+    budget = models.FloatField(max_length=100, default = 0.0, verbose_name= 'Orçamento')
+
+    amount_spent = models.FloatField(max_length=100, default = 0.0, verbose_name= 'Valor gasto')
 
     generating_account = models.FileField(upload_to = 'project_documents/%Y/%m/%d', blank = True, null=True, verbose_name= 'Conta geradora')
 
@@ -73,14 +75,3 @@ class Project(models.Model):
     
     def __str__(self):
         return self.project_name
-
-class Finance(models.Model):
-
-    profit = models.FloatField(max_length=100,  default = 0.0, verbose_name= 'Valor de entrada')
-
-    expenses = models.FloatField(max_length=100,  default = 0.0, verbose_name= 'Valor de saída')
-
-    description = models.CharField(max_length=255, default="", verbose_name= 'Descrição')
-
-    def __str__():
-        return str("Finanças")
