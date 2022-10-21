@@ -18,6 +18,10 @@ function FormClient(){
         phone_number: "",
         adress: "",
         cpf_cnpj: "",
+        proxy: null,
+        contract: null,
+        date: null
+        
     })
 
     const handleClients = (e) => {
@@ -45,7 +49,10 @@ function FormClient(){
                     email: res.email,
                     phone_number: res.phone_number,
                     adress: res.adress,
-                    cpf_cnpj: res.cpf_cnpj
+                    cpf_cnpj: res.cpf_cnpj,
+                    proxy: res.proxy,
+                    contract: res.contract,
+                    date: res.date
                 }
                 setClients(client);
             });
@@ -62,6 +69,15 @@ function FormClient(){
             toast.warning(`Endereço obrigatório`);
         }else if(clients.cpf_cnpj === "" || clients.cpf_cnpj.length > 14 || clients.cpf_cnpj.length < 11 ){
             toast.warning(`CPF/CNPJ Invalido`);
+        // }else if(clients.proxy === null){
+        //     toast.warning('Documento obrigatório')
+        // }
+        // else if(clients.contract === null){
+        // toast.warning('Contrato obrigatório')
+        //  }
+        //  else if(clients.date === null){
+        // toast.warning('Data obrigatória')
+        //      }
         }else if(typeof id === "undefined"){
             api
             .sendClients(clients)
@@ -109,7 +125,7 @@ function FormClient(){
                                 <Form.Label className="style-title">Telefone</Form.Label>
                                 <InputMask
                                     name="phone_number" 
-                                    mask="(99)99999-9999"
+                                    mask="(99) 9999-9999"
                                     className="form-control"
                                     placeholder="Telefone"
                                     isInvalid={clients.phone_number.indexOf(' ') >= 0} 
@@ -125,9 +141,17 @@ function FormClient(){
                                 <Form.Control type="number" placeholder="CPF/CNPJ" isInvalid={clients.cpf_cnpj.length > 14} defaultValue={clients.cpf_cnpj}/>
                                 <Form.Control.Feedback type="invalid">CNPJ invalido</Form.Control.Feedback>
                             </Form.Group>
-                            <Form.Group controlId="formFile" className="mb-3">
-                            <Form.Label className="style-title">Anexo</Form.Label>
-                                <Form.Control type="file" />
+                            <Form.Group controlId="proxy" className="mb-3">
+                                <Form.Label className="style-title">Procuração</Form.Label>
+                                <Form.Control type="file" multiple/>
+                            </Form.Group>
+                            <Form.Group controlId="contract" className="mb-3">
+                                <Form.Label className="style-title">Contrato</Form.Label>
+                                <Form.Control type="file" multiple/>
+                            </Form.Group>
+                            <Form.Group controlId="date" className="mb-3">
+                                <Form.Label className="style-title">Data</Form.Label>
+                                <Form.Control type="date" />
                             </Form.Group>
                         </Form>
                     </Container>

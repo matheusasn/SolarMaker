@@ -26,6 +26,16 @@ function AddDashboard() {
     maximumFractionDigits: 2
   })
 
+  const valueSpent = data?.map(item => item.amount_spent).reduce((prev, curr) => prev + curr, 0).toLocaleString('pt-BR', {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  })
+
+  const valueTotal = (data?.map(item => item.budget).reduce((prev, curr) => prev + curr, 0)- data?.map(item => item.amount_spent).reduce((prev, curr) => prev + curr, 0)).toLocaleString('pt-BR', {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  })
+
     return (
       <Container>
         <Row>
@@ -44,7 +54,7 @@ function AddDashboard() {
                     <Card.Header className="title-style bg-danger">Saida</Card.Header>
                     <Card.Body>
                         <div>
-                            <h3 className="h3-color">R$ 0,00</h3>
+                            <h3 className="h3-color">R$ {valueSpent}</h3>
                         </div>
                     </Card.Body>
                 </Card>
@@ -54,7 +64,7 @@ function AddDashboard() {
                     <Card.Header className="title-style" style={{ backgroundColor: "#48aeee"}}  >Total</Card.Header>
                     <Card.Body>
                         <div>
-                            <h3 className="h3-color">R$ {value}</h3>
+                            <h3 className="h3-color">R$ {valueTotal}</h3>
                         </div>
                     </Card.Body>
                 </Card>

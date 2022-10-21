@@ -112,7 +112,7 @@ function User(){
                                 <div key={`inline-radio`} className="d-flex justify-content-start">
                                     <Form.Check
                                         inline
-                                        label="vendedor"
+                                        label="Vendedor"
                                         name="group1"
                                         type={"radio"}
                                         id={`isSuperuser_false`}

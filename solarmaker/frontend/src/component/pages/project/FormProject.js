@@ -21,7 +21,9 @@ function Project(){
         modules: "",
         inverter: "",
         status: "",
-        budget: ""
+        budget: "",
+        amount_spent:"",
+        client_documents: null
     })
 
     const handleProjects = (e) => {
@@ -52,7 +54,9 @@ function Project(){
                     modules: res.modules,
                     inverter: res.inverter,
                     status: res.status,
-                    budget: res.budget
+                    budget: res.budget,
+                    amount_spent: res.amount_spent,
+                    client_documents: res.client_documents
                 }
                 setProject(project)
             });
@@ -135,11 +139,15 @@ function Project(){
                                 <Form.Control type="text" placeholder="" defaultValue={project.inverter}/>
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="budget">
-                                <Form.Label className="style-title">Valor</Form.Label>
+                                <Form.Label className="style-title">Valor orçado</Form.Label>
                                 <Form.Control type="number" placeholder="valor" defaultValue={project.budget}/>
                             </Form.Group>
-                            <Form.Group controlId="formFile" className="mb-3">
-                            <Form.Label className="style-title">Anexo</Form.Label>
+                            <Form.Group className="mb-3" controlId="amount_spent">
+                                <Form.Label className="style-title">Valor gasto</Form.Label>
+                                <Form.Control type="number" placeholder="valor" defaultValue={project.amount_spent}/>
+                            </Form.Group>
+                            <Form.Group controlId="client_documents" className="mb-3">
+                                <Form.Label className="style-title">Documentação</Form.Label>
                                 <Form.Control type="file" />
                             </Form.Group>
                         </Form>
