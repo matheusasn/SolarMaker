@@ -1,1 +1,3 @@
-web: gunicorn <filename>:<main method name>
+web: gunicorn hello_django.wsgi
+
+heroku ps:scale web=1
