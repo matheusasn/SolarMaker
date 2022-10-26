@@ -15,7 +15,7 @@ env = environ.Env(
 environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 SECRET_KEY = env("SECRET_KEY")
-ALLOWED_HOSTS = ['projectapp.herokuapp.com', '127.0.0.1', 'localhost'] 
+ALLOWED_HOSTS = ['solar-maker-api.herokuapp.com', '127.0.0.1', 'localhost'] 
 DEBUG = int(env("DEBUG", default=0))
 
 
