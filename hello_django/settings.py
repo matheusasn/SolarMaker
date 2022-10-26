@@ -16,7 +16,7 @@ environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 SECRET_KEY = env("SECRET_KEY")
 ALLOWED_HOSTS = ['*'] 
-DEBUG = int(env("DEBUG", default=0))
+DEBUG = int(1)
 
 
 
