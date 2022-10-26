@@ -23,14 +23,14 @@ DEBUG = int(env("DEBUG", default=0))
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOW_ORIGINS = [
-     '*'
+     'http://localhost:3000',
 ]
 CORS_ALLOW_ORIGIN_REGEXES = [
-     '*'
+     'http://localhost:3000',
 ]
 CORS_ORIGIN_WHITELIST = (
 
-       '*'
+       'http://localhost:3000',
 
 )
 
@@ -153,5 +153,8 @@ REST_FRAMEWORK = {
         "rest_framework.authentication.SessionAuthentication",
     )    
 } 
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 
 django_heroku.settings(locals())
