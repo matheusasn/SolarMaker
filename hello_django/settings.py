@@ -15,7 +15,7 @@ env = environ.Env(
 environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 SECRET_KEY = env("SECRET_KEY")
-ALLOWED_HOSTS = ['solar-maker-api.herokuapp.com', '127.0.0.1', 'localhost'] 
+ALLOWED_HOSTS = ['*'] 
 DEBUG = int(env("DEBUG", default=0))
 
 
@@ -23,14 +23,14 @@ DEBUG = int(env("DEBUG", default=0))
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOW_ORIGINS = [
-     'http://localhost:3000',
+     '*'
 ]
 CORS_ALLOW_ORIGIN_REGEXES = [
-     'http://localhost:3000',
+     '*'
 ]
 CORS_ORIGIN_WHITELIST = (
 
-       'http://localhost:3000',
+       '*'
 
 )
 
