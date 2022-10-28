@@ -3,7 +3,7 @@ import axios from "axios"
 class Auth {
     constructor() {
         this.axios = axios.create({
-            baseURL: "http://localhost:8000/api/v1/",
+            baseURL: "https://solar-maker-api.herokuapp.com/api/v1/",
             timeout: 30000,
             withCredentials: true,
         })

@@ -5,7 +5,7 @@ const acess_token = JSON.parse(localStorage.getItem("token"))
 class Api {
     constructor() {
         this.axios = axios.create({
-            baseURL: "http://localhost:8000/api/v1/",
+            baseURL: "https://solar-maker-api.herokuapp.com/api/v1/",
             timeout: 30000,
             headers: {
                 "Authorization": `Token ${acess_token?.token}`

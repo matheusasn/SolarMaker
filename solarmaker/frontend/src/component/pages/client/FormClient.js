@@ -79,6 +79,7 @@ function FormClient(){
         // toast.warning('Data obrigatória')
         //      }
         }else if(typeof id === "undefined"){
+            console.log(clients)
             api
             .sendClients(clients)
             .then((res) => {
@@ -125,7 +126,7 @@ function FormClient(){
                                 <Form.Label className="style-title">Telefone</Form.Label>
                                 <InputMask
                                     name="phone_number" 
-                                    mask="(99) 9999-9999"
+                                    mask="(99)9999-9999"
                                     className="form-control"
                                     placeholder="Telefone"
                                     isInvalid={clients.phone_number.indexOf(' ') >= 0} 
